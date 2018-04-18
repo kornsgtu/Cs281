@@ -5,7 +5,6 @@
 
 ?>
 
-
     <div class="slider-area">
         	<!-- Slider -->
 			<div class="block-slider block-slider4">

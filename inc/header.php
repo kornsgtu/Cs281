@@ -43,17 +43,16 @@
     <div class="header-area">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-3">
                     <div class="user-menu">
-
+                        <h1><a href="./"><img src="img/banner.png"></a></h1>
                     </div>
                 </div>
 
-                <div class="col-md-12">
+                <div class="col-md-14">
                   <div class="header-right">
                       <ul class="list-unstyled list-inline">
                           <li class="dropdown dropdown-small">
-
                               <?php
                                 if(isset($_SESSION["mem_type"])){
                                       if($_SESSION["mem_type"]==0){
@@ -70,8 +69,26 @@
                                         </a></li>
 
                               <?php
-                                          echo '<li><a href="add_product.html"><i class=""></i>Add Product</a></li>';
+                                          echo '<li><a href="addproduct.php"><i class=""></i>Add Product</a></li>';
+                                        }else{
+                                        ?>
+                                          <li><a href="cart.html"><i class="fa fa-user"></i>
+                                            <?php
+                                              if(isset($_SESSION["mem_id"])){
+                                                  echo $_SESSION["mem_id"];
+                                                  ?>
+                                                    </a></li>
+                                                    <?php
+                                              }
+
+                                              else{
+                                                  echo 'Please login';
+                                              }
+
                                         }
+                                        ?>
+
+                                        <?php
                                       echo '<li><a href="logout.php"><i class="fa fa-user"></i> Logout</a></li>';
 
                                 }else{
@@ -95,61 +112,56 @@
 
                       </ul>
                   </div>
-                </div><!-- End header area -->
+                </div>
             </div>
         </div>
     </div> <!-- End header area -->
 
-        <div class="site-branding-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="logo">
-                            <h1><a href="./"><img src="img/logo.png"></a></h1>
-                        </div>
+    <div class="site-branding-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="logo">
+                        <h1><a href="./"><img src="img/logo.png"></a></h1>
                     </div>
+                </div>
 
-                    <div class="col-md-6">
-                        <div class="shopping-item">
-                                                  <h1><a href="./"><img src="img/h4-slide.png"></a></h1>
+                <div class="col-md-6">
+                    <div class="shopping-item">
+                    <a><img src="img/banner.png"></a>
 
-                        </div>
                     </div>
                 </div>
             </div>
-        </div> <!-- End site branding area -->
+        </div>
+    </div> <!-- End site branding area -->
 
-        <div class="mainmenu-area">
-            <div class="container">
-                <div class="row">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-<?php
-
-
-  $file = basename($path, ".php"); // $file is set to "index"
-
-?>
-                            <li <?=($file == "index")? " class=\"active\"" : "" ; ?>><a href="index.php">Home</a></li>
-                            <li <?=($file == "shop")? " class=\"active\"" : "" ; ?>><a href="shop.php">Shop page</a></li>
-                            <li<?=($file == "single-product")? " class=\"active\"" : "" ; ?>><a href="single-product.php">Single product</a></li>
-                            <li<?=($file == "cart")? " class=\"active\"" : "" ; ?>><a href="cart.php">Cart</a></li>
-                            <li<?=($file == "checkout")? " class=\"active\"" : "" ; ?>><a href="checkout.php">Checkout</a></li>
-                        </ul>
-                        <p></p>
-                        <input type="text" placeholder="Search products..." >
-                        <input type="submit" value="Search">
-                        <?php
-                        ?>
-                    </div>
+    <div class="mainmenu-area">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                      <?php
+                        $file = basename($path, ".php"); // $file is set to "index"
+                      ?>
+                        <li <?=($file == "index")? " class=\"active\"" : "" ; ?>><a href="index.php">Home</a></li>
+                        <li <?=($file == "shop")? " class=\"active\"" : "" ; ?>><a href="shop.php">Shop page</a></li>
+                        <li<?=($file == "single-product")? " class=\"active\"" : "" ; ?>><a href="single-product.php">Single product</a></li>
+                        <li<?=($file == "cart")? " class=\"active\"" : "" ; ?>><a href="cart.php">Cart</a></li>
+                        <li<?=($file == "billing")? " class=\"active\"" : "" ; ?>><a href="checkout.php">Checkout</a></li>
+                    </ul>
+                    <p></p>
+                    <input type="text" placeholder="Search products..." >
+                    <input type="submit" value="Search">
                 </div>
             </div>
-        </div> <!-- End mainmenu area -->
+        </div>
+    </div> <!-- End mainmenu area -->
