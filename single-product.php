@@ -1,6 +1,6 @@
 <?php
 
-  $path = "index.php";
+  $path = "single-product.php";
   include "inc/header.php";
 
 ?>
