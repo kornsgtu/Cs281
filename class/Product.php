@@ -28,23 +28,23 @@ class Product{
   }
   public function getid()
   {
-    return $pid;
+    return $this->_pid;
   }
   public function getname()
   {
-    return $pname;
+    return $this->_pname;
   }
   public function getinfo()
   {
-    return $info;
+    return $this->_info;
   }
   public function getprice()
   {
-    return $price;
+    return $this->_price;
   }
   public function getimg()
   {
-    return $pimg;
+    return $this->_pimg;
   }
 
   public function __construct($id,$name,$price,$info,$img,$stock)
@@ -93,6 +93,35 @@ class Product{
 
   }
 
+  public function getProductById($conn,$pid) {
+    $sql = "SELECT * FROM product WHERE pid = '".$pid."'";
+    $rs = $conn->query($sql) or die($sql."<br>".$conn->error);
+
+    $data = $rs->fetch_array();
+
+    $this->_pid = $data['pid'];
+    $this->_pname = $data['pname'];
+    $this->_info = $data['pdetail'];
+    $this->_price = $data['pprice'];
+    $this->_pimg =  $data['pimg'];
+    $this->_stock = $data['stock'];
+  }
+
+  public function getProductByName($conn,$keyWord) {
+
+      $sql = "SELECT * FROM product WHERE pname LIKE '%".$keyWord."%' ";
+      $rs = $conn->query($sql) or die($sql."<br>".$conn->error);
+
+      $tempArr = array();
+
+      while ($data = $rs->fetch_array()) {
+
+          $prod = new Product($data['pid'],$data['pname'],$data['pprice'],$data['pdetail'],$data['pimg'],$data['stock']);
+          array_push($tempArr,$prod);
+      }
+
+      return $tempArr;
+  }
 
 }
 
