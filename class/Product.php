@@ -65,7 +65,7 @@ class Product{
               VALUES
               ('".$this->_pid."','".$this->_pname."','".$this->_info."','".$this->_price."','".$this->_pimg."','".$this->_stock."')";
     $conn->query($sql) or die($sql."<br>".$conn->error);
-    echo "<script>alert('บักทึกแล้วจ้าาา');window.location='addproduct.html'</script>";
+    echo "<script>alert('บักทึกแล้วจ้าาา');window.location='addproductPage.php'</script>";
   }
 
   public function getListProd($conn) {

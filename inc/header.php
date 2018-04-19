@@ -56,6 +56,7 @@
                               <?php
                                 if(isset($_SESSION["mem_type"])){
                                       if($_SESSION["mem_type"]==0){
+                                        echo 'Welcome Admin!';
                               ?>
                                         <li>
                                         <a href="cart.html"><i class="fa fa-user"></i>
@@ -69,10 +70,11 @@
                                         </a></li>
 
                               <?php
-                                          echo '<li><a href="addproduct.php"><i class=""></i>Add Product</a></li>';
+                                          echo '<li><a href="addproductPage.php"><i class=""></i>Add Product</a></li>';
+                                          echo '<li><a href="manageProduct.php"><i class=""></i>Manage Product</a></li>';
                                         }else{
                                         ?>
-                                          <li><a href="cart.html"><i class="fa fa-user"></i>
+                                          <li><a href="cart.php"><i class="fa fa-user"></i>
                                             <?php
                                               if(isset($_SESSION["mem_id"])){
                                                   echo $_SESSION["mem_id"];
@@ -107,7 +109,7 @@
                               ?>
                               <!--<li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>-->
                               <li><a>|</a></li>
-                              <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> My Cart</a></li>
+                              <li><a href="cart.php"><i class="fa fa-shopping-cart"></i> My Cart</a></li>
                           </li>
 
                       </ul>
