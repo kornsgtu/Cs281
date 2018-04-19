@@ -68,7 +68,8 @@ class Product{
 
   }
 
-  public function addProduct($conn){
+  public function addProduct($conn)
+  {
     $sql = "INSERT INTO product
               (pid, pname, pdetail, pprice, pimg, stock)
               VALUES
@@ -77,7 +78,8 @@ class Product{
     echo "<script>alert('บักทึกแล้วจ้าาา');window.location='addproductPage.php'</script>";
   }
 
-  public function getListProd($conn) {
+  public function getListProd($conn)
+  {
 
       $sql = "SELECT * FROM product  ";
       $rs = $conn->query($sql) or die($sql."<br>".$conn->error);
@@ -102,7 +104,8 @@ class Product{
 
   }
 
-  public function getProductById($conn,$pid) {
+  public function getProductById($conn,$pid)
+  {
     $sql = "SELECT * FROM product WHERE pid = '".$pid."'";
     $rs = $conn->query($sql) or die($sql."<br>".$conn->error);
 
@@ -116,7 +119,8 @@ class Product{
     $this->_stock = $data['stock'];
   }
 
-  public function getProductByName($conn,$keyWord) {
+  public function getProductByName($conn,$keyWord)
+  {
 
       $sql = "SELECT * FROM product WHERE pname LIKE '%".$keyWord."%' ";
       $rs = $conn->query($sql) or die($sql."<br>".$conn->error);
@@ -131,6 +135,7 @@ class Product{
 
       return $tempArr;
   }
+  
 
 }
 

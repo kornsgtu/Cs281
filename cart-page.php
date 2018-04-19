@@ -55,8 +55,9 @@
                             <ins>฿31900.00</ins>
                         </div>
                     </div>
-                </div>    
+                </div>
             </div>
+
 
             <div class="col-md-8">
                 <div class="product-content-right">
@@ -65,8 +66,8 @@
                             <table cellspacing="0" class="shop_table cart">
                                 <thead>
                                     <tr>
-                                        <th class="product-remove">&nbsp;</th>
-                                        <th class="product-thumbnail">&nbsp;</th>
+                                        <th class="product-remove">Delete</th>
+                                        <th class="product-thumbnail">Pic</th>
                                         <th class="product-name">Product</th>
                                         <th class="product-price">Price</th>
                                         <th class="product-quantity">Quantity</th>
@@ -84,7 +85,7 @@
                                         </td>
 
                                         <td class="product-name">
-                                            <a href="single-product.php">Ship Your Idea</a>
+                                            <a href="single-product.php" name = "pname">Ship Your Idea</a>
                                         </td>
 
                                         <td class="product-price">
@@ -93,9 +94,7 @@
 
                                         <td class="product-quantity">
                                             <div class="quantity buttons_added">
-                                                <input type="button" class="minus" value="-">
-                                                <input type="number" size="4" class="input-text qty text" title="Qty" value="1" min="0" step="1">
-                                                <input type="button" class="plus" value="+">
+                                                <input type="text" value="" placeholder="" name="capiece" class="input-text ">
                                             </div>
                                         </td>
 
@@ -103,6 +102,7 @@
                                             <span class="amount">£15.00</span>
                                         </td>
                                     </tr>
+
                                     <tr>
                                         <td class="actions" colspan="6">
                                             <div class="coupon">
