@@ -158,7 +158,6 @@
                         <li <?=($file == "shop")? " class=\"active\"" : "" ; ?>><a href="shop.php">Shop page</a></li>
                         <li<?=($file == "single-product")? " class=\"active\"" : "" ; ?>><a href="single-product.php">Single product</a></li>
                         <li<?=($file == "cart")? " class=\"active\"" : "" ; ?>><a href="cart-page.php">Cart</a></li>
-                        <li<?=($file == "billing")? " class=\"active\"" : "" ; ?>><a href="checkout.php">Checkout</a></li>
                     </ul>
                     <p></p>
                     <input type="text" placeholder="Search products..." >

@@ -107,58 +107,6 @@ class Member
   $conn->close();
   }
 
-  //ตะกล้าสินค้า
-  public getMyCart($conn)
-    {
-
-        $sql = "SELECT * FROM CART WHERE ACC_ID = '" . $this->getID(). "' ";
-        $query = $conn->query($sql);
-        $conn->close();
-        $resultArray = array();
-        $count = 0;
-        while ($result = $query->fetch_array()) {
-            $temp = Product::ShowProductDetail($result['PRO_ID']);
-            $temp->setPQuantity($result['QUANTITY']);
-            $resultArray[] = $temp;
-            $count ++;
-        }
-        if ($count === 0) {
-            return NULL;
-        }
-        $cart = new Cart($result['CART_INDEX'], $resultArray);
-        return $cart;
-    }
-
-    public addToMyCart($conn,$product)
-    {
-        $sql = "SELECT * FROM CART WHERE ACC_ID = '" . $this->getID() . "' AND PRO_ID = '" . $product->getPId() . "';";
-        $query = $conn->query($sql);
-        $result = $query->fetch_assoc();
-        if ($result) { // update
-            $quantity = $product->getPQuantity() + $result['QUANTITY'];
-            $sql = "UPDATE CART SET QUANTITY = '" . $quantity . "' WHERE CART_INDEX = '" . $result['CART_INDEX'] . "';";
-            $query = $conn->query($sql);
-            $conn->close();
-            return $query;
-        } else { // new
-            $sql = "INSERT INTO CART (ACC_ID,PRO_ID,QUANTITY)  VALUES ('" . $this->getID() . "','" . $product->getPId() . "'," . $product->getPQuantity() . ");";
-            $query = $conn->query($sql);
-            $conn->close();
-            return $query;
-        }
-    }
-
-    public removeFromMyCart($conn,$product)
-    {
-
-        $sql = "DELETE FROM CART WHERE ACC_ID = '" . $this->getID() . "' AND PRO_ID = '" . $product->getPId() . "';";
-        $query = $conn->query($sql);
-        $conn->close();
-        if ($query) {
-            return TRUE;
-        }
-        return FALSE;
-    }
 
 }
 
