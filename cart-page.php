@@ -4,8 +4,6 @@
   include "inc/header.php";
 
 ?>
-
-
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Recent Posts</h2>
                         <ul>

@@ -97,7 +97,7 @@
                                         <div class="form-row place-order">
 
                                             <input type="submit" data-value="Place order" value="Login" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
-                                            <a href="#" class = "fa fa-user" > register</a>
+                                            <a href="sign-up-page.php" class = "fa fa-user" > register</a>
                                         </div>
 
                                     </div>
