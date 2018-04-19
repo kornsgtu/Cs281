@@ -1,5 +1,5 @@
 <?php
-  $path = "shop.php";
+  $path = "shop.php"; 
   include "inc/header.php";
 
 ?>
