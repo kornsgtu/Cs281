@@ -1,16 +1,15 @@
 <?php
 
-  $path = "index.php";
+  $path = "cart.php";
   include "inc/header.php";
 
 ?>
-
     <div class="product-big-title-area">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="product-bit-title text-center">
-                        <h2>Login</h2>
+                        <h2>Sign up</h2>
                     </div>
                 </div>
             </div>
@@ -23,7 +22,7 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <div class="product-content-right">
                         <div class="woocommerce">
 
@@ -66,12 +65,12 @@
                                 <div class="clear"></div>
                             </form>
 
-                            <form enctype="multipart/form-data" action="login.php" class="checkout" method="post" name="checkout">
+                            <form enctype="multipart/form-data" action="sign-up.php" class="checkout" method="post" name="checkout">
 
                                 <div id="customer_details" class="col12-set">
                                     <div class="col-12">
                                         <div class="woocommerce-billing-fields">
-                                            <h3>Login</h3>
+                                            <h3>Sign up</h3>
 
                                             <p id="billing_first_name_field" class="form-row form-row-first validate-required">
                                                 <label class="" for="billing_first_name">Username
@@ -82,10 +81,32 @@
                                             <p id="billing_last_name_field" class="form-row form-row-last validate-required">
                                                 <label class="" for="billing_last_name">Password
                                                 </label>
-                                                <input type="password" value="" placeholder="" id="billing_last_name" name="cpassword" class="input-text ">
+                                                <input type="text" value="" placeholder="" id="billing_last_name" name="cpassword" class="input-text ">
                                             </p>
                                             <div class="clear"></div>
 
+                                            <p id="billing_company_field" class="form-row form-row-wide">
+                                                <label class="" for="billing_company">First name</label>
+                                                <input type="text" value="" placeholder="" id="billing_company" name="cfirstname" class="input-text ">
+                                            </p>
+
+                                            <p id="billing_first_name_field" class="form-row form-row-first validate-required">
+                                                <label class="" for="billing_first_name">Last name
+                                                </label>
+                                                <input type="text" value="" placeholder="" id="billing_first_name" name="clastname" class="input-text ">
+                                            </p>
+
+                                            <p id="billing_first_name_field" class="form-row form-row-first validate-required">
+                                                <label class="" for="billing_first_name">E-mail
+                                                </label>
+                                                <input type="text" value="" placeholder="" id="billing_first_name" name="cmail" class="input-text ">
+                                            </p>
+
+                                            <p id="billing_first_name_field" class="form-row form-row-first validate-required">
+                                                <label class="" for="billing_first_name">address
+                                                </label>
+                                                <textarea name="caddress" rows="4" cols="50"></textarea>
+                                            </p>
 
                                             <div class="clear"></div>
 
@@ -96,8 +117,9 @@
                                         </div>
                                         <div class="form-row place-order">
 
-                                            <input type="submit" data-value="Place order" value="Login" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
-                                            <a href="#" class = "fa fa-user" > register</a>
+                                            <input type="submit" data-value="Place order" value="Sign-up" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
+
+
                                         </div>
 
                                     </div>
@@ -110,7 +132,6 @@
             </div>
         </div>
     </div>
-
     <?php
           include "inc/end.php"
 
