@@ -5,6 +5,7 @@ class Product{
   private $_info;
   private $_price;
   private $_pimg;
+  private $_stock;
 
   public function setid($pid)
   {
@@ -26,6 +27,10 @@ class Product{
   {
     $this->_pimg = $pimg;
   }
+  public function setstock($stock)
+  {
+    $this->_stock = $stock;
+  }
   public function getid()
   {
     return $this->_pid;
@@ -45,6 +50,10 @@ class Product{
   public function getimg()
   {
     return $this->_pimg;
+  }
+  public function getstock()
+  {
+    return $this->_stock;
   }
 
   public function __construct($id,$name,$price,$info,$img,$stock)
@@ -122,7 +131,7 @@ class Product{
 
       return $tempArr;
   }
-
+  
 }
 
 

@@ -1,6 +1,6 @@
 <?php
 
-  $path = "cart.php";
+  $path = "sign-up-page.php";
   include "inc/header.php";
 
 ?>

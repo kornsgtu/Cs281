@@ -8,10 +8,9 @@
                       <h2>Smart Phone 4.0<span>Thailand</span></h2>
                       <p>This website is made up of a study of subjects Object-Oriented Analysis & Design . It has create for students to design their own website. If there is any error, please come here.</p>
                       <div class="footer-social">
-                            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a>
+                            <a href="https://www.youtube.com/" target="_blank"><i class="fa fa-youtube"></i></a>
                         </div>
                     </div>
                 </div>
