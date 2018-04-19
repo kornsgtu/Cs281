@@ -61,7 +61,7 @@
 <div class="col-md-3 col-sm-6">
     <div class="single-shop-product">
         <div class="product-upper">
-            <img src="img/product/<?php echo $arrProd[$i]->getimg() ;?>" alt="">
+            <img src="img/product/<?php echo $arrProd[$i]->getimg() ;?>" alt="" width="1000">
         </div>
         <h2><a href="single-product.php?pid=<?php echo $arrProd[$i]->getid() ;?>"><?php echo $arrProd[$i]->getname(); ?></a></h2>
         <div class="product-carousel-price">
