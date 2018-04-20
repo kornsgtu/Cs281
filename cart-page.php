@@ -1,7 +1,29 @@
 <?php
 
   $path = "cart.php";
+
+  include "class/Conn.php";
+  include "class/Product.php";
+  include "class/cart.php";
+
   include "inc/header.php";
+
+
+
+  if(!isset($_SESSION['cartItem'])) {
+
+    $_SESSION['cartItem'] = array();
+
+  }
+
+  if(isset($_REQUEST['pid'])) {
+
+    $pid = $_REQUEST['pid'];
+    cart::addProduct($_SESSION['cartItem'],$pid,1,$conn);
+
+  }
+
+  //print_r($_SESSION['cartItem']);
 
 ?>
 
@@ -62,7 +84,7 @@
             <div class="col-md-8">
                 <div class="product-content-right">
                     <div class="woocommerce">
-                        <form method="post" action="#">
+                        <form method="post" action="cart-update.php">
                             <table cellspacing="0" class="shop_table cart">
                                 <thead>
                                     <tr>
@@ -76,33 +98,44 @@
                                 </thead>
                                 <tbody>
                                     <tr class="cart_item">
+<?php
+      for($i=0;$i< count($_SESSION['cartItem']);$i++) {
+
+          $prod = $_SESSION['cartItem'][$i]->getProd();
+
+?>
                                         <td class="product-remove">
-                                            <a title="Remove this item" class="remove" href="#">×</a>
+                                            <a title="Remove this item" class="remove" href="cart-delete.php?prod=<?=$prod->getid()?>">
+                                                ×
+                                            </a>
                                         </td>
 
                                         <td class="product-thumbnail">
-                                            <a href="single-product.php"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="img/product-thumb-2.jpg"></a>
+                                            <a href="single-product.php"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="img/product/<?=$prod->getimg()?>"></a>
                                         </td>
 
                                         <td class="product-name">
-                                            <a href="single-product.php" name = "pname">Ship Your Idea</a>
+                                            <a href="single-product.php" name = "pname"><?=$prod->getname()?></a>
                                         </td>
 
                                         <td class="product-price">
-                                            <span class="amount">£15.00</span>
+                                            <span class="amount"><?=$prod->getprice()?></span>
                                         </td>
 
                                         <td class="product-quantity">
                                             <div class="quantity buttons_added">
-                                                <input type="text" value="" placeholder="" name="capiece" class="input-text ">
+                                              <input type="number" value="<?=$_SESSION['cartItem'][$i]->getAmount()?>" placeholder="" name="camount[]" class="input-text ">
+                                              <input type="hidden" value="<?=$prod->getid()?>" name="pid[]">
                                             </div>
                                         </td>
 
                                         <td class="product-subtotal">
-                                            <span class="amount">£15.00</span>
+                                            <span class="amount"><?=$prod->getprice()*$_SESSION['cartItem'][$i]->getAmount()?></span>
                                         </td>
                                     </tr>
-
+<?php
+      }
+?>
                                     <tr>
                                         <td class="actions" colspan="6">
                                             <div class="coupon">

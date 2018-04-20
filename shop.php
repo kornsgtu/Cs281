@@ -52,7 +52,7 @@
   $name = "";
   $price = "";
   $info = "";
-  $img = ""; 
+  $img = "";
   $stock = "";
   $pro = new Product($id,$name,$price,$info,$img,$stock);
   $arrProd = $pro->getListProd($conn);
@@ -73,7 +73,7 @@
       </div>
 
         <div class="product-option-shop">
-            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70" ><i class="fa fa-shopping-cart"></i> Add to cart</a>
+            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="cart-page.php?pid=<?php echo $arrProd[$i]->getid() ;?>" ><i class="fa fa-shopping-cart"></i> Add to cart</a>
         </div>
     </div>
 </div>

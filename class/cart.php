@@ -3,56 +3,106 @@
   class cart
   {
 
-    private $_cname;
-    private $_cprice;
-    private $_cimg;
-    private $_cstock;
+    private $_prod;
+    private $_amount;
 
-    public function setname($cname)
+    public function setProd($prod)
     {
-      $this->_cname = $cname;
+      $this->_prod = $prod;
     }
-    public function setprice($cprice)
+    public function setAmount($amount)
     {
-      $this->_cprice = $cprice;
-    }
-    public function setimg($cimg)
-    {
-      $this->_cimg = $cimg;
-    }
-    public function setstock($cstock)
-    {
-      $this->_ctock = $cstock;
-    }
-    public function getname()
-    {
-      return $this->_cname;
-    }
-    public function getprice()
-    {
-      return $this->_cprice;
-    }
-    public function getimg()
-    {
-      return $this->_cimg;
-    }
-    public function getstock()
-    {
-      return $this->_cstock;
+      $this->_amount = $amount;
     }
 
-    public function __construct($cname,$cprice,$cimg,$cstock)
+    public function getProd()
+    {
+      return $this->_prod;
+    }
+    public function getAmount()
+    {
+      return $this->_amount;
+    }
+
+    public function __construct()
     {
 
-        $this->_cname = $cname;
-        $this->_cprice = $cprice;
-        $this->_cimg =  $cimg;
-        $this->_cstock = $cstock;
+    }
+
+    public static function updateProduct(&$cartList,$pro_id,$amount) {
+
+      for($i=0;$i< count($cartList);$i++) {
+
+          if($cartList[$i]->getProd()->getid() == $pro_id) {
+            //unset($cartList[$i]);
+            //array_splice($cartList, $i, 1);
+
+            $cartList[$i]->setAmount($amount);
+            break;
+          }
+
+      }
 
     }
+
+    public static function delProduct(&$cartList,$pro_id) {
+
+      for($i=0;$i< count($cartList);$i++) {
+
+          if($cartList[$i]->getProd()->getid() == $pro_id) {
+            //unset($cartList[$i]);
+            array_splice($cartList, $i, 1);
+            break;
+          }
+
+      }
+
+    }
+
+    public static function  addProduct(&$cartList,$pro_id,$pro_amount,$conn) {
+
+        $id = $pro_id;
+        $name = "";
+        $price = "";
+        $info = "";
+        $img = "";
+        $stock = "";
+
+        $pro = new Product($id,$name,$price,$info,$img,$stock);
+        $pro->getProductById($conn,$pro_id);
+
+        $cItem = new cart();
+        $cItem->setProd($pro);
+        $cItem->setAmount($pro_amount);
+
+        $addDup = false;
+
+
+        for($i=0;$i< count($cartList);$i++) {
+
+            if($cartList[$i]->getProd()->getid() == $pro->getid()) {
+              $addDup = true;
+              break;
+            }
+
+        }
+
+        if($addDup ) {
+
+            $cartList[$i]->setAmount($cartList[$i]->getAmount()+1);
+
+        } else {
+
+            array_push($cartList,$cItem);
+
+        }
+
+
+    }
+
     public function addcart($conn,$name)
     {
-
+/*
       $sql2 ="INSERT INTO cart (cname,cimg, cprice)VALUES
       ('".$this->_cname."','".$this->_cimg."','".$this->cprice."')
       SELECT cname,cimg, cprice FROM product WHERE cname == '$name';"
@@ -75,7 +125,7 @@
 	        }else{
 		            echo "<script>alert(' error.');window.location='index.php'</script>";
 	        }
-
+*/
     }
 
   }
