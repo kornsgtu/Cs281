@@ -178,35 +178,6 @@
                                 </li>
                             </ul>
                         </div>
-
-
-                        <div class="cart_totals ">
-                            <h2>Cart Totals</h2>
-
-                            <table cellspacing="0">
-                                <tbody>
-                                    <tr class="cart-subtotal">
-                                        <th>Cart Subtotal</th>
-                                        <td><span class="amount">£15.00</span></td>
-                                    </tr>
-
-                                    <tr class="shipping">
-                                        <th>Tax</th>
-                                        <td>Free Shipping</td>
-                                    </tr>
-
-                                    <tr class="order-total">
-                                        <th>Order Total</th>
-                                        <td><strong><span class="amount">£15.00</span></strong> </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-
-
-
-
                         </div>
                     </div>
                 </div>
