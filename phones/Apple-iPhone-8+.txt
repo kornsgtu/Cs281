@@ -1,0 +1,15 @@
+Lastest price 32,500 THB
+Smartphone
+Display Retina Display 24-bit (True color) 
+- Multi-Touch
+- Width 5.5 Inch (Diagonal)
+- Resolution 1080 x 1920 Pixels (401 ppi) 
+- Capacitive
+Sensor 
+- Fingerprint identity sensor (Touch ID)	
+- Accelerometer (Accelerometer) 
+- Ambient Light Sensor (Ambient light) 
+- Proximity Sensor 
+- Three-axis Gyroscope (Three-axis gyroscope) 
+- Built-in Barometer
+Colours : Gold, Space Gray, Silver
