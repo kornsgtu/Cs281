@@ -52,7 +52,7 @@
   $name = "";
   $price = "";
   $info = "";
-  $img = "";
+  $img = ""; 
   $stock = "";
   $pro = new Product($id,$name,$price,$info,$img,$stock);
   $arrProd = $pro->getListProd($conn);

@@ -154,11 +154,9 @@
                       ?>
                         <li <?=($file == "index")? " class=\"active\"" : "" ; ?>><a href="index.php">Home</a></li>
                         <li <?=($file == "shop")? " class=\"active\"" : "" ; ?>><a href="shop.php">Shop page</a></li>
-                        <li><a href="single-product.html">Single product</a></li>
-                        <li><a href="cart.html">Cart</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
-                        <li><a href="#">Others</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li <?=($file == "single-product")? " class=\"active\"" : "" ; ?>><a href="single-product.php">Single product</a></li>
+                        <li <?=($file == "cart")? " class=\"active\"" : "" ; ?>><a href="cart-page.php">Cart</a></li>              
+                        <li <?=($file == "Notification")? " class=\"active\"" : "" ; ?>><a href="Notification.php">Notification</a></li>
                     </ul>
                     <p></p>
                     <input type="text" placeholder="Search products..." >
