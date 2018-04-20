@@ -106,7 +106,7 @@
 ?>
                                         <td class="product-remove">
                                             <a title="Remove this item" class="remove" href="cart-delete.php?prod=<?=$prod->getid()?>">
-                                                ×
+                                                Remove
                                             </a>
                                         </td>
 
@@ -144,7 +144,7 @@
                                                 <input type="submit" value="Apply Coupon" name="apply_coupon" class="button">
                                             </div>
                                             <input type="submit" value="Update Cart" name="update_cart" class="button">
-                                            <input type="submit" value="Checkout" name="proceed" class="checkout-button button alt wc-forward">
+
                                         </td>
                                     </tr>
                                 </tbody>
@@ -154,7 +154,7 @@
                         <div class="cart-collaterals">
 
 
-                        <div class="cross-sells">
+                        <!--<div class="cross-sells">
                             <h2>You may be interested in...</h2>
                             <ul class="products">
                                 <li class="product">
@@ -177,7 +177,7 @@
                                     <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow" href="single-product.html">Select options</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div>-->
                         </div>
                     </div>
                 </div>

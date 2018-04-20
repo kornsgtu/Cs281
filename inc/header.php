@@ -56,6 +56,7 @@
                               <?php
                                 if(isset($_SESSION["mem_type"])){
                                       if($_SESSION["mem_type"]==0){
+                                        echo '<span style="color:#000080;text-align:center;">Welcome Admin!';
                               ?>
                                         <li>
                                         <a href="cart-page.php"><i class="fa fa-user"></i>
@@ -69,7 +70,8 @@
                                         </a></li>
 
                               <?php
-                                          echo '<li><a href="addproduct.php"><i class=""></i>Add Product</a></li>';
+                                          echo '<li><a href="addproductPage.php"><i class=""></i>Add Product</a></li>';
+                                            echo '<li><a href="manageProduct.php"><i class=""></i>Manage Product</a></li>';
                                         }else{
                                         ?>
                                           <li><a href="cart-page.php"><i class="fa fa-user"></i>
@@ -155,11 +157,13 @@
                         <li <?=($file == "index")? " class=\"active\"" : "" ; ?>><a href="index.php">Home</a></li>
                         <li <?=($file == "shop")? " class=\"active\"" : "" ; ?>><a href="shop.php">Shop page</a></li>
                         <li <?=($file == "cart")? " class=\"active\"" : "" ; ?>><a href="cart-page.php">Cart</a></li>
-                        <li <?=($file == "Notification")? " class=\"active\"" : "" ; ?>><a href="Notification.php">Notification</a></li>                      
+                        <li <?=($file == "Notification")? " class=\"active\"" : "" ; ?>><a href="Notification.php">Notification</a></li>
                     </ul>
                     <p></p>
-                    <input type="text" placeholder="Search products..." >
-                    <input type="submit" value="Search">
+                    <form action="search_product.php" method="post">
+                      <input type="text" value="" placeholder="Search products..." name="pname" class="input-text">
+                      <input type="submit" value="Search">
+                    </form>
                 </div>
             </div>
         </div>
