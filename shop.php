@@ -3,7 +3,6 @@
   include "inc/header.php";
 
 ?>
-
     <div class="product-big-title-area">
         <div class="container">
             <div class="row">
@@ -16,11 +15,52 @@
         </div>
     </div>
 
+    <div class="slider-area">
+          <!-- Slider -->
+      <div class="block-slider block-slider4">
+        <ul class="" id="bxslider-home4">
+          <li>
+            <img src="img/h4-slide.png" alt="Slide">
+            <div class="caption-group">
+              <h2 class="caption title">
+              &nbsp; iPhone <span class=""> <strong>X</strong></span>
+              </h2>
+              <a class="caption button-radius" href="phones.php%20?pid=00003"><span class="icon"></span>&nbsp;Shop now</a>
+            </div>
+          </li>
+          <li><img src="img/h4-slide2.png" alt="Slide">
+            <div class="caption-group">
+              <h2 class="caption title">
+                Samsung Galaxy S9+<span class="primary"></span>
+              </h2>
+              <a class="caption button-radius" href="phones.php%20?pid=00011"><span class="icon"></span>&nbsp;Shop now</a>
+            </div>
+          </li>
+          <li><img src="img/h4-slide3.png" alt="Slide">
+            <div class="caption-group">
+              <h2 class="caption title">
+                Huawei P20<span class="primary"></span>
+              </h2>
+              <a class="caption button-radius" href="phones.php%20?pid=00004"><span class="icon"></span>Shop now</a>
+            </div>
+          </li>
+          <li><img src="img/h4-slide4.png" alt="Slide">
+            <div class="caption-group">
+              <h2 class="caption title">
+                Vivo V9 <span class="primary"></span>
+              </h2>
+              <a class="caption button-radius" href="phones.php%20?pid=00008"><span class="icon"></span>Shop now</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!-- ./Slider -->
+    </div> <!-- End slider area -->
+
     <div class = "type">
       <div class="row">
-        <div class = "col-md-4">
       <p><blockquote>
-        <table width="1225" height="160" border="1" bordercolor="Silver ">
+        <table width="1225" height="160" border="1" bordercolor="Silver " ALIGN = "center">
           <tr>
             <td width="175"><div align="center"><a href="Shop_apple.php"><img src="img/apple.jpg" width="120" height="90"></a></div></td>
             <td width="175"><div align="center"><a href="Shop_samsung.php"><img src="img/Samsung-logo-2015-Nobg.png" height="123"></a></div></td>
@@ -33,33 +73,33 @@
         </table>
       </blockquote></p>
     </div>
-        </div>
       </div>
     </div>
 
-    <h2 class="section-title">  Mobiles (11) </h2>
+<?php
+      include "class/Conn.php";
+      include "class/Product.php";
 
-    <div class="single-product-area">
+      $id = "";
+      $name = "";
+      $price = "";
+      $info = "";
+      $img = "";
+      $stock = "";
+      $pro = new Product($id,$name,$price,$info,$img,$stock);
+      $arrProd = $pro->getListProd($conn);
+?>
+
+    <h2 class="section-title">  Mobiles (<?=count($arrProd)?>) </h2>
+
+    <div class="phones-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
 <?php
-
-  include "class/Conn.php";
-  include "class/Product.php";
-
-  $id = "";
-  $name = "";
-  $price = "";
-  $info = "";
-  $img = "";
-  $stock = "";
-  $pro = new Product($id,$name,$price,$info,$img,$stock);
-  $arrProd = $pro->getListProd($conn);
-
   for($i = 0; $i<count($arrProd);$i++){
-
 ?>
+
 <div class="col-md-3 col-sm-6">
     <div class="single-shop-product">
         <div class="product-upper">
@@ -68,7 +108,7 @@
         <div class="col-md-10 col-sm-8">
         <h2><a href="phones.php ?pid=<?php echo $arrProd[$i]->getid() ;?>"><?php echo $arrProd[$i]->getname(); ?></a></h2>
         <div class="product-carousel-price">
-            <ins><?php echo $arrProd[$i]->getprice() ;?></ins>
+            <ins><font size="4">฿ <?php echo $arrProd[$i]->getprice() ;?></font></ins>
         </div>
       </div>
 

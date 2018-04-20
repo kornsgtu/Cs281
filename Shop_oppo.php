@@ -2,12 +2,6 @@
   include "inc/shop-header.php";
 
 ?>
-    <h2 class="section-title">  OPPO Mobiles (3) </h2>
-
-    <div class="single-product-area">
-        <div class="zigzag-bottom"></div>
-        <div class="container">
-            <div class="row">
 <?php
 
   include "class/Conn.php";
@@ -22,8 +16,15 @@
   $pro = new Product($id,$name,$price,$info,$img,$stock);
   $arrProd = $pro->getListProd($conn);
 
-  for($i = 0; $i<count($arrProd);$i++){
+?>
+    <h2 class="section-title">  OPPO Mobiles (<?=count($arrProd)?>) </h2>
 
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+<?php
+  for($i = 0; $i<count($arrProd);$i++){
 ?>
 <div class="col-md-3 col-sm-6">
     <div class="single-shop-product">
@@ -31,9 +32,9 @@
             <img src="img/product/<?php echo $arrProd[$i]->getimg() ;?>" alt="">
         </div>
         <div class="col-md-10 col-sm-8">
-        <h2><a href="single-product.php?pid=<?php echo $arrProd[$i]->getid() ;?>"><?php echo $arrProd[$i]->getname(); ?></a></h2>
+        <h2><a href="phones.php ?pid=<?php echo $arrProd[$i]->getid() ;?>"><?php echo $arrProd[$i]->getname(); ?></a></h2>
         <div class="product-carousel-price">
-            <ins><?php echo $arrProd[$i]->getprice() ;?></ins>
+            <ins><font size="4">฿ <?php echo $arrProd[$i]->getprice() ;?></font></ins>
         </div>
       </div>
 
