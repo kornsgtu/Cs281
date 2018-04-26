@@ -123,3 +123,7 @@
             </div>
         </div>
     </div>
+    <?php
+          include "inc/end.php"
+
+    ?>

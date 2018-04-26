@@ -56,13 +56,12 @@
                               <?php
                                 if(isset($_SESSION["mem_type"])){
                                       if($_SESSION["mem_type"]==0){
-                                        echo 'Welcome Admin!';
+                                        echo '<span style="color:#000080;text-align:center;">Welcome Admin!';
                               ?>
                                         <li>
-                                        <a href="cart.php"><i class="fa fa-user"></i>
+                                        <a href="cart-page.php"><i class="fa fa-user"></i>
                                           <?php
                                               if(isset($_SESSION["mem_id"])){
-
                                                   echo $_SESSION["mem_id"];
                                               }else{
                                                   echo 'Please login';
@@ -71,11 +70,11 @@
                                         </a></li>
 
                               <?php
-                                          echo '<li><a href="addProductPage.php"><i class=""></i>Add Product</a></li>';
-                                          echo '<li><a href="manageProduct.php"><i class=""></i>Manage Product</a></li>';
+                                          echo '<li><a href="addproductPage.php"><i class=""></i>Add Product</a></li>';
+                                            echo '<li><a href="manageProduct.php"><i class=""></i>Manage Product</a></li>';
                                         }else{
-                              ?>
-                                          <li><a href="cart.php"><i class="fa fa-user"></i>
+                                        ?>
+                                          <li><a href="cart-page.php"><i class="fa fa-user"></i>
                                             <?php
                                               if(isset($_SESSION["mem_id"])){
                                                   echo $_SESSION["mem_id"];
@@ -95,7 +94,7 @@
                                       echo '<li><a href="logout.php"><i class="fa fa-user"></i> Logout</a></li>';
 
                                 }else{
-                                    echo '<li><a href="LoginPage.php"><i class="fa fa-user"></i> Login</a></li>';
+                                    echo '<li><a href="Login-page.php"><i class="fa fa-user"></i> Login</a></li>';
                                 }
                               ?>
 
@@ -105,12 +104,12 @@
                                       }
 
                                 }else{
-                                    echo '<li><a href="sign-upPage.php"><i class="fa fa-user"></i> Sign-up</a></li>';
+                                    echo '<li><a href="sign-up-page.php"><i class="fa fa-user"></i> Sign-up</a></li>';
                                 }
                               ?>
                               <!--<li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>-->
                               <li><a>|</a></li>
-                              <li><a href="cart.php"><i class="fa fa-shopping-cart"></i> My Cart</a></li>
+                              <li><a href="cart-page.php"><i class="fa fa-shopping-cart"></i> My Cart</a></li>
                           </li>
 
                       </ul>
@@ -157,16 +156,18 @@
                       ?>
                         <li <?=($file == "index")? " class=\"active\"" : "" ; ?>><a href="index.php">Home</a></li>
                         <li <?=($file == "shop")? " class=\"active\"" : "" ; ?>><a href="shop.php">Shop page</a></li>
-                        <li <?=($file == "single-product")? " class=\"active\"" : "" ; ?>><a href="single-product.php">Single product</a></li>
-                        <li <?=($file == "cart")? " class=\"active\"" : "" ; ?>><a href="cart.php">Cart</a></li>
-                        <li <?=($file == "checkout")? " class=\"active\"" : "" ; ?>><a href="checkout.php">Checkout</a></li>
+                        <?php if(isset($_SESSION['mem_id'])){?>
+                           <li <?=($file == "Favorite")? " class=\"active\"" : "" ; ?>><a href="Favorite.php">Favorite</a></li>
+                        <?php }?>
+                        
+                        <li <?=($file == "cart")? " class=\"active\"" : "" ; ?>><a href="cart-page.php">Cart</a></li>
                         <li <?=($file == "Notification")? " class=\"active\"" : "" ; ?>><a href="Notification.php">Notification</a></li>
-                        <li <?=($file == "#")? " class=\"active\"" : "" ; ?>><a href="#">Others</a></li>
-                        <li <?=($file == "#")? " class=\"active\"" : "" ; ?>><a href="#">Contact</a></li>
                     </ul>
                     <p></p>
-                    <input type="text" placeholder="Search products..." >
-                    <input type="submit" value="Search">
+                    <form action="search_product.php" method="post">
+                      <input type="text" value="" placeholder="Search products..." name="pname" class="input-text">
+                      <input type="submit" value="Search">
+                    </form>
                 </div>
             </div>
         </div>

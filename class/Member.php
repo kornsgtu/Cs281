@@ -1,5 +1,3 @@
-
-
 <?php
 
 class Member
@@ -50,7 +48,6 @@ class Member
   public function getemail(){
     return $email;
   }
-
   public function __construct($id,$pwd,$name,$lname,$type,$address,$email)
   {
 

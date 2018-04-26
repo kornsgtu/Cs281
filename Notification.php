@@ -16,10 +16,10 @@
             </div>
         </div>
     </div> <!-- End Page title area -->
-	
+
     <?php
 		if($_POST) {
-					
+
 			$email = $_POST['email'];
 			$class = ' class="err"';
 			if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -61,7 +61,7 @@
                     <div class="product-content-right">
                         <div class="woocommerce">
                                 <div >
-                                          
+
                                     <form method="post">
                                     <div class="w3-row-padding">
                                     <div class="w3-half">
@@ -78,12 +78,12 @@
                                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                       <input class="w3-radio" type="radio" name="subscribe" value="unsubscribe">
                                       <label>ยกเลิกรับข่าวสาร</label></p>
-                                     
+
                                       </div>
                                       <br>
                                       <br>
                                     </form>
-                                    
+
                                     </div>
                         </div>
                     </div>
@@ -91,3 +91,7 @@
             </div>
         </div>
     </div>
+    <?php
+          include "inc/end.php"
+
+    ?>
