@@ -7,6 +7,7 @@
     include "class/Conn.php";
     include "class/Product.php";
 
+
     $id = "";
     $name = "";
     $price = "";
@@ -15,6 +16,19 @@
     $stock = "";
     $pro = new Product($id,$name,$price,$info,$img,$stock);
     $pro->getProductById($conn,$_REQUEST['pid']);
+    $mem = $_SESSION['mem_id'];
+   if($_GET['action']=="favorite"){
+      if($mem==""){
+      echo "<script>alert('cannot add my favorite');</script>";
+
+      }else{
+         $idp = $pro->getid();
+         mysqli_query($conn,"insert into favorite(userid,productid) values('$mem','$idp')");
+         echo "<script>alert('Product added in my Favorite');</script>";
+
+      }
+
+   }
 
 ?>
 
@@ -64,11 +78,23 @@
                                     </div>
 
                                     <form action="cart-page.php" class="cart">
+                                    <div class="favorite-button m-t-10">
+											<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Wishlist" href="phones.php?pid=<?php echo htmlentities($pro->getid())?>&&action=favorite">
+											    <i class="fa fa-heart"></i>
+											</a>
+
+											</a>
+										</div>
+									</div>
                                         <div class="quantity">
                                             <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
                                         </div>
                                         <button class="add_to_cart_button" type="submit">Add to cart</button>
                                         <ins class="#"><?php echo '(Available Stock: ' . $pro->getstock() . ' )' ;?></ins>
+                                        <br>
+                                       <div class="col-sm-6">
+
+
                                     </form>
                                     <div role="tabpanel">
                                           <h2>Product Description</h2>

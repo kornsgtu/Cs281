@@ -156,6 +156,9 @@
                       ?>
                         <li <?=($file == "index")? " class=\"active\"" : "" ; ?>><a href="index.php">Home</a></li>
                         <li <?=($file == "shop")? " class=\"active\"" : "" ; ?>><a href="shop.php">Shop page</a></li>
+                        <?php if(isset($_SESSION['mem_id'])){?>
+                           <li <?=($file == "Favorite")? " class=\"active\"" : "" ; ?>><a href="Favorite.php">Favorite</a></li>
+                        <?php }?>
                         <li <?=($file == "cart")? " class=\"active\"" : "" ; ?>><a href="cart-page.php">Cart</a></li>
                         <li <?=($file == "Notification")? " class=\"active\"" : "" ; ?>><a href="Notification.php">Notification</a></li>
                     </ul>

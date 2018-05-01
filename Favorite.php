@@ -1,15 +1,22 @@
 <?php
-  $path = "shop.php";
+  $path = "Favorite.php";
   include "inc/header.php";
+  include "class/Conn.php";
 
 ?>
-
+<?php 
+if(isset($_GET['del']))
+{
+$fid=intval($_GET['del']);
+$query=mysqli_query($conn,"delete from favorite where id='$fid'");
+}
+?>
     <div class="product-big-title-area">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="product-bit-title text-center">
-                        <h2>Shop</h2>
+                        <h2>My Favorite</h2>
                     </div>
                 </div>
             </div>
@@ -36,47 +43,46 @@
         </div>
       </div>
     </div>
-
-    <h2 class="section-title">  Mobiles (11) </h2>
+<?php 
+$res = mysqli_query($conn,"select favorite.productid,product.pname,product.pprice,product.pimg from favorite join product on product.pid=favorite.productid where favorite.userid='".$_SESSION['mem_id']."'" );
+  $num=mysqli_num_rows($res);
+  ?>
+    <h2 class="section-title">  Mobiles (<?php echo $num;?>) </h2>
 
     <div class="single-product-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
+           
+            
 <?php
 
-  include "class/Conn.php";
-  include "class/Product.php";
-
-  $id = "";
-  $name = "";
-  $price = "";
-  $info = "";
-  $img = "";
-  $stock = "";
-  $pro = new Product($id,$name,$price,$info,$img,$stock);
-  $arrProd = $pro->getListProd($conn);
-
-  for($i = 0; $i<count($arrProd);$i++){
-
+  $res = mysqli_query($conn,"select favorite.productid as fid ,favorite.id as id,product.pname as ppname,product.pprice as ppprice,product.pimg as ppimg from favorite join product on product.pid=favorite.productid where favorite.userid='".$_SESSION['mem_id']."'" );
+  $num=mysqli_num_rows($res);
+   if($num>0){
+   ?>
+   <table align="center" width="500px">
+            <tr>
+            <td>image</td>
+            <td>name</td>
+            <td>price</td>
+            <td>option</td>
+            </tr>
+   <?php 
+   
+      while($row=mysqli_fetch_array($res)){
 ?>
-<div class="col-md-3 col-sm-6">
-    <div class="single-shop-product">
-        <div class="product-upper">
-            <img src="img/product/<?php echo $arrProd[$i]->getimg() ;?>" alt="">
-        </div>
-        <div class="col-md-10 col-sm-8">
-        <h2><a href="phones.php ?pid=<?php echo $arrProd[$i]->getid() ;?>&&action=unfavorite"><?php echo $arrProd[$i]->getname(); ?></a></h2>
-        <div class="product-carousel-price">
-            <ins><?php echo $arrProd[$i]->getprice() ;?></ins>
-        </div>
-      </div>
-
-        <div class="product-option-shop">
-            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="cart-page.php?pid=<?php echo $arrProd[$i]->getid() ;?>" ><i class="fa fa-shopping-cart"></i> Add to cart</a>
-        </div>
-    </div>
-</div>
+<tr>
+<td><img src="img/product/<?php echo $row['ppimg'] ;?>" width="100" height="100" alt=""></td>
+            <td><a href="phones.php ?pid=<?php echo $row['fid'] ;?>&&action=unfavorite"><?php echo $row['ppname'] ;?></a></td>
+            <td><?php echo $row['ppprice'] ;?></td>
+            <td><a href="Favorite.php?del=<?php echo htmlentities($row['id']);?>" onClick="return confirm('Are you sure you want to delete?')" class=""><i class="fa fa-times"></i></a></td>
+</tr>
+<?php 
+}
+}
+?>
+</table>
 <?php
 /*
       echo $arrProd[$i]->_pid . " ";
@@ -86,7 +92,7 @@
       echo $arrProd[$i]->_stock . " ";
       echo "<br>";
 */
-  }
+  
 
 ?>
 
