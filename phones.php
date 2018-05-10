@@ -77,7 +77,7 @@
                                         <ins><?php echo $pro->getprice() ;?></ins>
                                     </div>
 
-                                    <form action="cart-page.php" class="cart">
+                                    <form action="cart-page.php?pid=<?php echo $pro->getid();?>" method="post" class="cart">
                                     <div class="favorite-button m-t-10">
 											<a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Wishlist" href="phones.php?pid=<?php echo htmlentities($pro->getid())?>&&action=favorite">
 											    <i class="fa fa-heart"></i>
@@ -90,9 +90,9 @@
                                             <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
                                         </div>
                                         <button class="add_to_cart_button" type="submit">Add to cart</button>
-                                        <ins class="#"><?php echo '(Available Stock: ' . $pro->getstock() . ' )' ;?></ins>
+                                        <ins class="cart-page.php"><?php echo '(Available Stock: ' . $pro->getstock() . ' )' ;?></ins>
                                         <br>
-                                       <div class="col-sm-6">
+                                       <div class="fa fa-shopping-cart">
 
 
                                     </form>

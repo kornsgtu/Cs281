@@ -3,6 +3,7 @@
   include "class/Conn.php";
   include "class/Product.php";
   include "class/cart.php";
+  include "class/CartDetail.php";
   session_start();
 
   $pid = $_REQUEST['prod'];

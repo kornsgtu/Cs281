@@ -1,27 +1,28 @@
 <?php
 
-  $path = "cart.php";
+    $path = "cart.php";
 
-  include "class/Conn.php";
-  include "class/Product.php";
-  include "class/cart.php";
+    include "class/Conn.php";
+    include "class/Product.php";
+    include "class/cart.php";
+    include "class/cartDetail.php";
 
-  include "inc/header.php";
+    include "inc/header.php";
 
 
 
-  if(!isset($_SESSION['cartItem'])) {
+    if(!isset($_SESSION['cartItem'])) {
 
-    $_SESSION['cartItem'] = array();
+        $_SESSION['cartItem'] = array();
 
-  }
+    }
 
-  if(isset($_REQUEST['pid'])) {
+    if(isset($_REQUEST['pid'])) {
 
-    $pid = $_REQUEST['pid'];
-    cart::addProduct($_SESSION['cartItem'],$pid,1,$conn);
+        $pid = $_REQUEST['pid'];
+        cart::addProduct($_SESSION['cartItem'],$pid,1,$conn);
 
-  }
+    }
 
   //print_r($_SESSION['cartItem']);
 
@@ -93,7 +94,9 @@
                                         <th class="product-name">Product</th>
                                         <th class="product-price">Price</th>
                                         <th class="product-quantity">Quantity</th>
-                                        <th class="product-subtotal">Total</th>
+                                        <th class="product-subtotal">Total Price</th>
+                                        <th class="product-vat">Vat</th>
+                                        <th class="product-final">Final Price</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -132,6 +135,23 @@
                                         <td class="product-subtotal">
                                             <span class="amount"><?=$prod->getprice()*$_SESSION['cartItem'][$i]->getAmount()?></span>
                                         </td>
+                                        <td class="product-vat">
+                                            <span class="amount">
+                                            <?php
+                                                //$prod->getprice()*$_SESSION['cartItem'][$i]->getVat()
+                                                $_SESSION['cartItem'][$i]->setVat();
+                                                echo $_SESSION['cartItem'][$i]->getVat();
+                                            ?>
+                                            </span>
+                                        </td>
+                                        <td class="product-final">
+                                            <span class="amount">
+                                            <?php
+                                                $_SESSION['cartItem'][$i]->setFinal();
+                                                echo $_SESSION['cartItem'][$i]->getFinal()
+                                            ?>
+                                            </span>
+                                        </td>
                                     </tr>
 <?php
       }
@@ -144,40 +164,13 @@
                                                 <input type="submit" value="Apply Coupon" name="apply_coupon" class="button">
                                             </div>
                                             <input type="submit" value="Update Cart" name="update_cart" class="button">
-
+                                            <input type="button" value="Comfirm" id="btnSave" name="confirm" class="button">
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </form>
-
                         <div class="cart-collaterals">
-
-
-                        <!--<div class="cross-sells">
-                            <h2>You may be interested in...</h2>
-                            <ul class="products">
-                                <li class="product">
-                                    <a href="single-product.php">
-                                        <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="img/product-2.jpg">
-                                        <h3>Ship Your Idea</h3>
-                                        <span class="price"><span class="amount">£20.00</span></span>
-                                    </a>
-
-                                    <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow" href="single-product.html">Select options</a>
-                                </li>
-
-                                <li class="product">
-                                    <a href="single-product.php">
-                                        <img width="325" height="325" alt="T_4_front" class="attachment-shop_catalog wp-post-image" src="img/product-4.jpg">
-                                        <h3>Ship Your Idea</h3>
-                                        <span class="price"><span class="amount">£20.00</span></span>
-                                    </a>
-
-                                    <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="22" rel="nofollow" href="single-product.html">Select options</a>
-                                </li>
-                            </ul>
-                        </div>-->
                         </div>
                     </div>
                 </div>
@@ -189,3 +182,10 @@
           include "inc/end.php"
 
     ?>
+<script>
+
+  $('#btnSave').click(function() {
+      window.location='cart-confirm.php';
+  });
+
+</script>

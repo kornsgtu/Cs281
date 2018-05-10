@@ -14,39 +14,39 @@ class Member
     $this->_id = $id;
   }
   public function getID(){
-    return $id;
+    return $this->_id;
   }
   public function setpwd($pwd){
     $this->_pwd =  $pwd;
   }
   public function getpwd(){
-    return $pwd;
+    return $this->_pwd;
   }
   public function setname($name){
     $this->_name =  $name;
   }
   public function getname(){
-    return $name;
+    return $this->_name;
   }public function setlname($lname){
     $this->_lname =  $lname;
   }
   public function getlname(){
-    return $lname;
+    return $this->_lname;
   }public function settype($type){
     $this->_type =  $type;
   }
   public function gettype(){
-    return $type;
+    return $this->_type;
   }public function setaddress($address){
     $this->_address =  $address;
   }
   public function getaddress(){
-    return $address;
+    return $this->_address;
   }public function setemail($email){
     $this->_email =  $email;
   }
   public function getemail(){
-    return $email;
+    return $this->_email;
   }
   public function __construct($id,$pwd,$name,$lname,$type,$address,$email)
   {
@@ -104,7 +104,34 @@ class Member
       }
 
 
-  $conn->close();
+      $conn->close();
+  }
+
+  public function getMemById($conn) {
+
+      $sql = "SELECT * FROM member WHERE mem_id = '".$this->_id."'";
+      $rs = $conn->query($sql) or die($sql."<br>".$conn->error);
+      $data = $rs->fetch_object();
+
+      $this->_name = $data->mem_name;
+      $this->_lname = $data->mem_lname;
+      $this->_pwd =  $data->mem_pass;
+      $this->_type = $data->mem_type;
+      $this->_address = $data->mem_add;
+      $this->_email = $data->mem_email;
+
+  }
+
+  public function updateMemById($conn) {
+
+    $sql = "UPDATE member SET
+              mem_name = '".$this->_name."'
+              ,mem_lname = '".$this->_lname."'
+              ,mem_add = '".$this->_address."'
+              ,mem_email = '".$this->_email."'
+            WHERE mem_id = '".$this->_id."'";
+    $conn->query($sql) or die($conn->error);
+
   }
 
 

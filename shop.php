@@ -66,7 +66,7 @@
             <img src="img/product/<?php echo $arrProd[$i]->getimg() ;?>" alt="">
         </div>
         <div class="col-md-10 col-sm-8">
-        <h2><a href="phones.php ?pid=<?php echo $arrProd[$i]->getid() ;?>&&action=unfavorite"><?php echo $arrProd[$i]->getname(); ?></a></h2>
+        <h2><a href="phones.php?pid=<?php echo $arrProd[$i]->getid() ;?>&&action=unfavorite"><?php echo $arrProd[$i]->getname(); ?></a></h2>
         <div class="product-carousel-price">
             <ins><?php echo $arrProd[$i]->getprice() ;?></ins>
         </div>

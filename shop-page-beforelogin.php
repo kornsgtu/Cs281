@@ -62,7 +62,15 @@
 ?>
 <div class="col-md-3 col-sm-6">
     <div class="single-shop-product">
-        
+        <div class="product-upper">
+            <img src="img/product/<?php echo $arrProd[$i]->getimg() ;?>" alt="">
+        </div>
+        <div class="col-md-10 col-sm-8">
+        <h2><a href="phones.php ?pid=<?php echo $arrProd[$i]->getid() ;?>"><?php echo $arrProd[$i]->getname(); ?></a></h2>
+        <div class="product-carousel-price">
+            <ins><?php echo $arrProd[$i]->getprice() ;?></ins>
+        </div>
+      </div>
 
         <div class="product-option-shop">
             <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="Login-page.php" ><i class="fa fa-shopping-cart"></i> Add to cart</a>

@@ -3,25 +3,44 @@
   class cart
   {
 
-    private $_prod;
-    private $_amount;
+    private $_cartId;
+    private $_itemList;
+    private $_memId;
+    private $_date;
 
-    public function setProd($prod)
+
+    public function setCartID($id)
     {
-      $this->_prod = $prod;
+      $this->_cartId = $id;
     }
-    public function setAmount($amount)
+    public function setItemList($list)
     {
-      $this->_amount = $amount;
+      $this->_itemList = $list;
+    }
+    public function setMemID($memID)
+    {
+      $this->_memId  =  $memID ;
+    }
+    public function setDate($date)
+    {
+      $this->_date  = $date;
     }
 
-    public function getProd()
+    public function getCartID()
     {
-      return $this->_prod;
+      return $this->_cartId;
     }
-    public function getAmount()
+    public function getItemList()
     {
-      return $this->_amount;
+      return $this->_itemList;
+    }
+    public function getMemID()
+    {
+      return $this->_memId;
+    }
+    public function getDate()
+    {
+      return $this->_date;
     }
 
     public function __construct()
@@ -38,6 +57,8 @@
             //array_splice($cartList, $i, 1);
 
             $cartList[$i]->setAmount($amount);
+            $cartList[$i]->setvat($vat);
+            $cartList[$i]->setfinal($vat,$amount);
             break;
           }
 
@@ -71,7 +92,7 @@
         $pro = new Product($id,$name,$price,$info,$img,$stock);
         $pro->getProductById($conn,$pro_id);
 
-        $cItem = new cart();
+        $cItem = new CartDetail();
         $cItem->setProd($pro);
         $cItem->setAmount($pro_amount);
 
@@ -100,32 +121,57 @@
 
     }
 
-    public function addcart($conn,$name)
+    public function cartConfirm($conn)
     {
-/*
-      $sql2 ="INSERT INTO cart (cname,cimg, cprice)VALUES
-      ('".$this->_cname."','".$this->_cimg."','".$this->cprice."')
-      SELECT cname,cimg, cprice FROM product WHERE cname == '$name';"
+
+      // add cart data
+      $sql = "INSERT INTO cart
+                (mem_id, cart_date)
+                VALUES
+                ('" . $this->_memId . "',NOW())";
+      $conn->query($sql) or die();
+      $this->_cartId = $conn->insert_id;
+
+      for($i=0;$i< count($this->_itemList);$i++) {
+
+          $sql = "INSERT INTO cart_detail
+                    (cart_id, product_id
+                        , cart_amount,cart_vat)
+                    VALUES
+                    ('".$this->_cartId."', '".$this->_itemList[$i]->getProd()->getid()."'
+                        , '".$this->_itemList[$i]->getAmount()."', '".$this->_itemList[$i]->getVat()."') ";
+
+          $conn->query($sql) or die();
+
+          echo $sql ="UPDATE product SET
+                  stock = stock-".$this->_itemList[$i]->getAmount()."
+                  WHERE pid = '".$this->_itemList[$i]->getProd()->getid()."'";
+          $conn->query($sql) or die();
+
+        }
 
 
-      $conn->query($sql2) or die($sql."<br>".$conn->error);
-      echo "<script>alert('เอาใส่ตะกร้าแล้วจ้าาา');window.location='cart-page.php'</script>";
+    }
 
-      $sql = "SELECT * FROM product WHERE pname = '".$this->name."'";
-      $rs = $conn->query($sql) or die($sql."<br>".$conn->error);     //save information from table to object
-      $data = $rs->fetch_array();  //mysqli_fecth_array($object);
-      if(!$data){
-                 echo "<script>alert('error na ja.');window.history.back()</script>";
-       }else{
-          session_start();
-	        $_SESSION["pname"] = $data['pname'];
-	        session_write_close();
-	        if($_SESSION["pname"] = $data['pname']){
-		            echo "<script>alert('add successful.');window.location='index.php'</script>";
-	        }else{
-		            echo "<script>alert(' error.');window.location='index.php'</script>";
-	        }
-*/
+    public static function getCartListByMember($conn,$memID){
+
+        $reArr = array();
+
+        $sql = "SELECT
+                  *
+                FROM cart
+                WHERE mem_id='".$memID."'";
+        $rs = $conn->query($sql) or die($sql."<br>".$conn->error);
+        while($data=$rs->fetch_object()) {
+            $cart = new cart();
+            $cart->setCartID($data->cart_id);
+            $cart->setItemList(CartDetail::getDetailByCartID($conn,$data->cart_id));
+            $cart->setMemID($data->mem_id);
+            $cart->setDate($data->cart_date);
+            array_push($reArr,$cart);
+        }
+
+        return $reArr;
     }
 
   }

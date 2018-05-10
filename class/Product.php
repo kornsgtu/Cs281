@@ -135,7 +135,7 @@ class Product{
 
       return $tempArr;
   }
-  
+
 
 }
 
