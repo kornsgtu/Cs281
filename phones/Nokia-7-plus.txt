@@ -1,0 +1,14 @@
+Lastest price 13,900 THB
+Smartphone
+Display IPS-LCD (Unknow color depth) 
+- Multi-Touch
+- Width 6 Inch (Diagonal)
+- Resolution 1080 x 2160 Pixels 
+- Corning Gorilla Glass 3
+Sensor 
+- Fingerprint Verification (Finger Print)	
+- Accelerometer (Accelerometer) 
+- Ambient Light Sensor (Ambient light) 
+- Proximity Sensor 
+- Gyroscope (Gyroscope)
+Colours : Black, White

@@ -1,0 +1,15 @@
+Lastest price 19,990 THB
+Smartphone
+Display LCD 24-bit (True color) 
+- Multi-Touch
+- Width 5.8 Inch (Diagonal)
+- Resolution 1080 x 2240 Pixels (428 ppi) 
+- Capacitive
+Sensor 
+- Fingerprint Verification (Finger Print)	
+- Facial recognition technology (Face Detection)	
+- Ambient Light Sensor (Ambient light) 
+- Motion Sensor (Accelerometer) 
+- Proximity Sensor 
+- Gyroscope (Gyroscope)
+Colours : Black, Pink, Blue
