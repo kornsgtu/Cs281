@@ -80,7 +80,7 @@ class Member
                 VALUES
                 ('".$this->_id."','".$this->_name."','".$this->_lname."','".$this->_pwd."','".$this->_type."','".$this->_address."','".$this->_email."')";
       $conn->query($sql) or die($sql."<br>".$conn->error);
-      echo "<script>alert('บักทึกแล้วจ้าาา');window.location='login.html'</script>";
+      echo "<script>alert('บักทึกแล้วจ้าาา');window.location='Login-page.php'</script>";
   }
 
   public function login($conn)

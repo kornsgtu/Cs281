@@ -55,7 +55,7 @@ $mem->getMemById($conn);
                                     <div class="form-row place-order">
 
                                         <input type="submit" data-value="Place order" value="update" id="place_order" name="woocommerce_checkout_place_order" class="button alt">
-
+                                        <input type="button" value="Comfirm" id="btnPayment" name="payments" class="button">
 
                                     </div>
 
@@ -74,3 +74,10 @@ $mem->getMemById($conn);
           include "inc/end.php"
 
     ?>
+    <script>
+
+      $('#btnPayment').click(function() {
+          window.location='epayment.php';
+      });
+
+    </script>
