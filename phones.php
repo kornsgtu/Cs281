@@ -114,10 +114,18 @@
 
                                         <?php
                                         if(isset($_SESSION["mem_id"])){
+                                          if($pro->getstock() == 0){
+                                        ?>
+                                          <input type="button" value = "Out of stock." class="btn btn-primary disabled">
+                                          <ins class="#"><?php echo '(Available Stock: ' . $pro->getstock() . ' )' ;?></ins>
+                                        <?php
+                                          }else{
                                         ?>
                                           <button class="add_to_cart_button" type="submit">Add to cart</button>
                                           <ins class="#"><?php echo '(Available Stock: ' . $pro->getstock() . ' )' ;?></ins>
                                         <?php
+                                          }
+
                                         }else{
                                         ?>
                                           <input type="button" value = "Please login to add item to cart." class="btn btn-info disabled">

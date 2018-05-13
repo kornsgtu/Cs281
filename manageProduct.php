@@ -70,7 +70,7 @@
                                             </td>
 
                                             <td>
-                                                <input type="button" value = "Delete" class="btn btn-warning" onclick="window.location.href='deleteProduct.php?pid=<?=$pro->getid()?>'">
+                                                <input type="button" value = "Delete" class="btn btn-danger" onclick="window.location.href='deleteProduct.php?pid=<?=$pro->getid()?>'">
                                             </td>
 
                                         </tr>

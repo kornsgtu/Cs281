@@ -119,7 +119,7 @@ class Product{
               SET
               discount = '".$this->_discount."' WHERE pid = '".$this->_pid."'";
     $conn->query($sql) or die($sql."<br>".$conn->error);
-    echo "<script>alert('Update complete.');window.location='managePromotion.php'</script>";
+    echo "<script>alert('Update complete.');window.location='promotionDiscount.php'</script>";
 
   }
 

@@ -69,16 +69,38 @@
         <div class="col-md-10 col-sm-8">
         <h2><a href="phones.php ?pid=<?php echo $arrProd[$i]->getid() ;?>&&action=unfavorite"><?php echo $arrProd[$i]->getname(); ?></a></h2>
         <div class="product-carousel-price">
-            <ins><?php echo $arrProd[$i]->getprice() ;?></ins>
+          <?php
+            $realPrice = $arrProd[$i]->getprice();
+            $disPer = $arrProd[$i]->getdiscount();
+            $calPrice = $realPrice - ($realPrice*($disPer/100));
+          if($disPer > 0){
+            ?>
+            <strike><?php echo number_format((float)$realPrice, 2, '.', '');?></strike>
+            <ins><?php echo number_format((float)$calPrice, 2, '.', '');?></ins>
+            <?php
+          }else{
+            ?>
+            <ins><?php echo number_format((float)$realPrice, 2, '.', '');?></ins>
+            <?php
+          }
+            ?>
+
         </div>
       </div>
 
         <div class="product-option-shop">
           <?php
           if(isset($_SESSION["mem_id"])){
+            if($arrProd[$i]->getstock()==0){
+          ?>
+            <button style="height:30px;width:120px" type="button" class="btn btn-primary disabled">Out of stock.</button>
+          <?php
+            }else{
           ?>
             <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="cart-page.php?pid=<?php echo $arrProd[$i]->getid() ;?>" ><i class="fa fa-shopping-cart"></i> Add to cart</a>
           <?php
+            }
+
           }else{
           ?>
             <input type="button" value = "Please login to add item to cart." class="btn btn-info disabled">
