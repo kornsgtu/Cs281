@@ -19,13 +19,13 @@
                     <div class="footer-menu">
                         <h2 class="footer-wid-title">Categories</h2>
                         <ul>
-                            <li>Samsung</li>
-                            <li>Apple</li>
-                            <li>Huawei</li>
-                            <li>Oppo</li>
-                            <li>Vivo</li>
-                            <li>Nokie</li>
-                            <li>ASUS</li>
+                            <li><a href="#">Samsung</a></li>
+                            <li><a href="#">Apple</a></li>
+                            <li><a href="#">Huawei</a></li>
+                            <li><a href="#">Oppo</a></li>
+                            <li><a href="#">Vivo</a></li>
+                            <li><a href="#">Nokie</a></li>
+                            <li><a href="#">ASUS</a></li>
                         </ul>
                     </div>
                 </div>

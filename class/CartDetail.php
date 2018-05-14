@@ -43,9 +43,9 @@
         return $this->_detailId;
     }
 
-    public function getCartID($id)
+    public function getCartID()
     {
-        return $this->_cartID;
+        return $this->_cartId;
     }
 
     public function getProd()
@@ -78,7 +78,7 @@
         $rs = $conn->query() or die();
         while($data = $rs->fetch_object()) {
 
-          $prod = new Product("","","","","","");
+          $prod = new Product("","","","","","","");
           $prod->getProductById($conn,$data->product_id);
 
           $detail = new CartDetail();

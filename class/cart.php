@@ -88,8 +88,9 @@
         $info = "";
         $img = "";
         $stock = "";
+        $discount = "";
 
-        $pro = new Product($id,$name,$price,$info,$img,$stock);
+        $pro = new Product($id,$name,$price,$info,$img,$stock,$discount);
         $pro->getProductById($conn,$pro_id);
 
         $cItem = new CartDetail();

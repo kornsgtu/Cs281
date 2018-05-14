@@ -1,3 +1,16 @@
+<?php
+session_start();
+include "class/Conn.php";
+include "class/Member.php";
+include "class/Product.php";
+include "class/cart.php";
+include "class/cartDetail.php";
+include "class/Payment.php";
+
+$mem = new Member($_SESSION['mem_id'],"","","","","","");
+$mem->getMemById($conn);
+
+?>
 <html>
   <head>
     <title>EPAYLINK Testing</title></head>
@@ -5,11 +18,14 @@
 <form method="post"
   action="https://www.thaiepay.com/epaylink/payment.aspx">
   <input type="hidden" name="refno" value="99999">
-  <input type="hidden" name="merchantid" value="">
-  <input type="hidden" name="customeremail" value="">
-  <input type="hidden" name="productdetail" value="Testing Product">
-  <input type="hidden" name="total" value="400">
+  <input type="hidden" name="merchantid" value="09090909">
+  <input type="hidden" name="customeremail" value="<?=$mem->getemail()?>">
+  <input type="hidden" name="productdetail" value="test">
+  <input type="hidden" name="total" value="35000">
+  <input type="hidden" name="cc" value="00">
+  <input type="hidden" name="returnurl" value="http://http://localhost/281/Cs281/index.php?id=success">
   <br>
+
 <input type="submit" name="Submit" value="Comfirm Order">
 </form>
 </body>

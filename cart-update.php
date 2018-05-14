@@ -8,7 +8,7 @@
 
   $camount = $_REQUEST['camount'];
   $pid = $_REQUEST['pid'];
-
+  
 
   for($i=0;$i<count($pid);$i++) {
 
@@ -16,7 +16,7 @@
 
   }
 
-  
+
 ?>
 <script>
   alert("update success !!!");

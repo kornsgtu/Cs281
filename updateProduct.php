@@ -7,6 +7,6 @@
   $id = $_REQUEST['pid'];
   $price = $_REQUEST['pprice'];
   $stock = $_REQUEST['qty'];
-  $pro = new Product($id,'',$price,'','',$stock);
+  $pro = new Product($id,'',$price,'','',$stock,'');
   $pro->updateProduct($conn);
 ?>

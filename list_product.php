@@ -9,7 +9,8 @@
   $info = "";
   $img = "";
   $stock = "";
-  $pro = new Product($id,$name,$price,$info,$img,$stock);
+  $discount = "";
+  $pro = new Product($id,$name,$price,$info,$img,$stock,$discount);
   $arrProd = $pro->getListProd($conn);
 
   for($i = 0; $i<count($arrProd);$i++){

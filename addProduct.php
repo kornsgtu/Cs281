@@ -11,7 +11,7 @@
   $img = $_FILES["pimg"]["name"];
   $stock = 1;
 
-  $pro = new Product($id,$name,$price,$info,$img,$stock);
+  $pro = new Product($id,$name,$price,$info,$img,$stock,$discount);
   $pro->addProduct($conn);
   move_uploaded_file($_FILES["pimg"]["tmp_name"],"img/product/".$img);
 

@@ -72,6 +72,7 @@
                               <?php
                                           echo '<li><a href="addproductPage.php"><i class=""></i>Add Product</a></li>';
                                             echo '<li><a href="manageProduct.php"><i class=""></i>Manage Product</a></li>';
+                                              echo '<li><a href="managePromotion.php"><i class=""></i>Manage Promotion</a></li>';
                                         }else{
                                         ?>
                                           <li><a href="cart-page.php"><i class="fa fa-user"></i>
@@ -161,6 +162,7 @@
                         <?php }?>
                         <li <?=($file == "cart")? " class=\"active\"" : "" ; ?>><a href="cart-page.php">Cart</a></li>
                         <li <?=($file == "Notification")? " class=\"active\"" : "" ; ?>><a href="Notification.php">Notification</a></li>
+                        <li <?=($file == "History")? " class=\"active\"" : "" ; ?>><a href="history.php">history</a></li>
                     </ul>
                     <p></p>
                     <form action="search_product.php" method="post">

@@ -1,6 +1,6 @@
 <?php
 
-    $path = "cart.php";
+    $path = "cart-page.php";
 
     include "class/Conn.php";
     include "class/Product.php";
@@ -52,28 +52,28 @@
                     <h2 class="sidebar-title">Products</h2>
                     <div class="thubmnail-recent">
                         <img src="img\product\Apple-iPhone-8.jpg" class="recent-thumb" alt="">
-                        <h2><a href="single-product.html">IPhone 8</a></h2>
+                        <h2><a>IPhone 8</a></h2>
                         <div class="product-sidebar-price">
                             <ins> ฿28500.00</ins>
                         </div>
                     </div>
                     <div class="thubmnail-recent">
                         <img src="img\product\Apple-iPhone-8plus.jpg" class="recent-thumb" alt="">
-                        <h2><a href="single-product.html">IPhone 8+</a></h2>
+                        <h2><a>IPhone 8+</a></h2>
                         <div class="product-sidebar-price">
                             <ins>฿32500.00</ins>
                         </div>
                     </div>
                     <div class="thubmnail-recent">
                         <img src="img\product\Apple-iPhone-X.jpg" class="recent-thumb" alt="">
-                        <h2><a href="single-product.html">IPhone X</a></h2>
+                        <h2><a>IPhone X</a></h2>
                         <div class="product-sidebar-price">
                             <ins>฿40500.00 </ins>
                         </div>
                     </div>
                     <div class="thubmnail-recent">
                         <img src="img\product\Samsung-Galaxy-s9+.jpg" class="recent-thumb" alt="">
-                        <h2><a href="single-product.html">Samsung Galaxy S9+</a></h2>
+                        <h2><a>Samsung Galaxy S9+</a></h2>
                         <div class="product-sidebar-price">
                             <ins>฿31900.00</ins>
                         </div>
@@ -102,6 +102,8 @@
                                 <tbody>
                                     <tr class="cart_item">
 <?php
+      $total1 = 0;
+      $total2 = 0;
       for($i=0;$i< count($_SESSION['cartItem']);$i++) {
 
           $prod = $_SESSION['cartItem'][$i]->getProd();
@@ -122,7 +124,21 @@
                                         </td>
 
                                         <td class="product-price">
-                                            <span class="amount"><?=$prod->getprice()?></span>
+                                          <?php
+                                            $realPrice = $prod->getprice();
+                                            $disPer = $prod->getdiscount();
+                                            $calPrice = $realPrice - ($realPrice*($disPer/100));
+
+                                          if($disPer > 0){
+                                            ?>
+                                            <strike><?php echo $realPrice ?></strike>
+                                            <?php
+                                            echo number_format((float)$calPrice, 2, '.', '');
+                                          }else{
+                                            echo number_format((float)$realPrice, 2, '.', '');
+                                          }
+                                            ?>
+
                                         </td>
 
                                         <td class="product-quantity">
@@ -133,23 +149,42 @@
                                         </td>
 
                                         <td class="product-subtotal">
-                                            <span class="amount"><?=$prod->getprice()*$_SESSION['cartItem'][$i]->getAmount()?></span>
+                                          <?php
+                                            $finalPrice = $realPrice*$_SESSION['cartItem'][$i]->getAmount();
+                                            $finalDiscount = $calPrice*$_SESSION['cartItem'][$i]->getAmount();
+                                          if($disPer > 0){
+                                            echo number_format((float)$finalDiscount, 2, '.', '');
+                                          }else{
+                                            echo number_format((float)$finalPrice, 2, '.', '');
+                                          }
+                                            ?>
+
+
+
                                         </td>
                                         <td class="product-vat">
                                             <span class="amount">
-                                            <?php
-                                                //$prod->getprice()*$_SESSION['cartItem'][$i]->getVat()
-                                                $_SESSION['cartItem'][$i]->setVat();
-                                                echo $_SESSION['cartItem'][$i]->getVat();
-                                            ?>
+                                              <?php
+                                                  //$prod->getprice()*$_SESSION['cartItem'][$i]->getVat()
+                                                  $_SESSION['cartItem'][$i]->setVat();
+                                                  $vat = $_SESSION['cartItem'][$i]->getVat();
+                                                  echo number_format($vat, 2, '.', '');
+                                              ?>
                                             </span>
                                         </td>
                                         <td class="product-final">
                                             <span class="amount">
-                                            <?php
-                                                $_SESSION['cartItem'][$i]->setFinal();
-                                                echo $_SESSION['cartItem'][$i]->getFinal()
-                                            ?>
+                                              <?php
+                                                if($disPer > 0){
+                                                  echo number_format((float)$finalDiscount+$vat, 2, '.', '');
+                                                  $total1 = $total1+($finalDiscount+$vat);
+                                                }else{
+                                                  echo number_format((float)$finalPrice+$vat, 2, '.', '');
+                                                  $total2 = $total2+($finalPrice+$vat);
+                                                }
+                                                  $finalTotalPrice = $total1 + $total2;
+
+                                              ?>
                                             </span>
                                         </td>
                                     </tr>
@@ -157,20 +192,27 @@
       }
 ?>
                                     <tr>
+                                        <td class="actions" colspan="7">
+                                          <div class="coupon">
+                                              <label for="coupon_code">Coupon:</label>
+                                              <input type="text" placeholder="Coupon code" value="" id="coupon_code" class="input-text" name="coupon_code">
+                                              <input type="submit" value="Apply Coupon" name="apply_coupon" class="button">
+                                          </div>
+                                          <input type="submit" value="Update Cart" name="update_cart" class="button">
+                                        </td>
+
                                         <td class="actions" colspan="6">
-                                            <div class="coupon">
-                                                <label for="coupon_code">Coupon:</label>
-                                                <input type="text" placeholder="Coupon code" value="" id="coupon_code" class="input-text" name="coupon_code">
-                                                <input type="submit" value="Apply Coupon" name="apply_coupon" class="button">
-                                            </div>
-                                            <input type="submit" value="Update Cart" name="update_cart" class="button">
-                                            <input type="button" value="Comfirm" id="btnSave" name="confirm" class="button">
+                                          <label><?php echo 'Total Price: ' . $finalTotalPrice ?></label>
+
+                                        <input type="button" value="Comfirm" id="btnSave" name="confirm" class="btn btn-success">
+                                      </td>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </form>
                         <div class="cart-collaterals">
+
                         </div>
                     </div>
                 </div>
@@ -185,7 +227,7 @@
 <script>
 
   $('#btnSave').click(function() {
-      window.location='cart-confirm.php';
+      window.location='cart-confirm.php?total=<?=$finalTotalPrice?>';
   });
 
 </script>

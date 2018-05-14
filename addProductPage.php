@@ -92,8 +92,7 @@
 
 
                                             <p id="billing_city_field" class="form-row form-row-wide address-field validate-required" data-o_class="form-row form-row-wide address-field validate-required">
-                                                <label class="" for="billing_city">Image
-                                                </label>
+                                                <label class="" for="billing_city">Image</label>
                                                 <input type="file" value="" placeholder="Town / City" id="billing_city" name="pimg" class="input-text ">
                                             </p>
 
