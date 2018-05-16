@@ -12,7 +12,7 @@
 
   for($i=0;$i<count($pid);$i++) {
 
-      cart::updateProduct($_SESSION['cartItem'],$pid[$i],$camount[$i]);
+      cart::updateProduct($_SESSION['cartItem'],$pid[$i],$camount[$i],'');
 
   }
 

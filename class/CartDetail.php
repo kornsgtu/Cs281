@@ -38,7 +38,6 @@
     {
       $this->_final  = ($this->_prod->getprice()*$this->_amount) + $this->_vat;
     }
-
     public function setTotal()
     {
       $this->_total  = $final;
@@ -94,7 +93,6 @@
           $detail->setAmount($data->cart_amount);
           $detail->setVat();
           $detail->setFinal();
-
 
           array_push($reVal, $detail);
 

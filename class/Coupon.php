@@ -64,6 +64,13 @@ class Coupon{
     echo "<script>alert('New Coupon added.');window.location='promotionCoupon.php'</script>";
   }
 
+  public function deleteProduct($conn) {
+    $sql = "DELETE FROM coupon WHERE cpid = '".$this->_cpid."'";
+    $conn->query($sql) or die($sql."<br>".$conn->error);
+    echo "<script>alert('Delete coupon complete.');window.location='promotionCoupon.php'</script>";
+
+  }
+
   function randomCouponCode() {
 
     $chars = "abcdefghijkmnopqrstuvwxyz023456789";
@@ -78,6 +85,24 @@ class Coupon{
         $i++;
     }
     return $pass;
+
+  }
+
+  public function getCouponByCode($conn,$keyword)
+  {
+
+      $sql = "SELECT * FROM coupon WHERE code LIKE '".$keyword."' ";
+      $rs = $conn->query($sql) or die($sql."<br>".$conn->error);
+
+      $tempArr = array();
+
+      while ($data = $rs->fetch_array()) {
+
+          $cou = new Coupon($data['cpid'],$data['code'],$data['cdis']);
+          array_push($tempArr,$cou);
+      }
+
+      return $tempArr;
 
   }
 

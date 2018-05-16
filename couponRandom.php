@@ -4,10 +4,9 @@
   include "class/Coupon.php";
 
 
-  $cpid = $REQUEST['cpid'];
-  $code = $_REQUEST['code'];
+  $cdis = $_REQUEST['cdis'];
 
-  $pro = new Coupon($cpid,$code);
+  $pro = new Coupon($cdis);
   $pro->randomCouponCode($conn);
 
 ?>

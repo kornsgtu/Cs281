@@ -64,8 +64,19 @@
                                                 $disPer = $pro->getdiscount();
                                                 $calPrice = $realPrice - ($realPrice*($disPer/100));
                                                 ?>
-                                                <strike><?php echo $realPrice ?><strike>
-                                                <label><?php echo $calPrice ?><label>
+                                                <?php
+                                                  if($disPer >0){
+                                                ?>
+                                                  <strike><?php echo $realPrice ?><strike>
+                                                  <label><?php echo $calPrice ?><label>
+                                                <?php
+                                                  }else {
+                                                ?>
+                                                  <label><?php echo $realPrice ?><label>
+                                                <?php
+                                                  }
+                                                ?>
+
                                                 <label>TH Baht</label>
                                             </td>
 

@@ -56,7 +56,7 @@ if($name == ''){
   </div>
   <?php
 }else{
-$pro = new Product('',$name,'','','','');
+$pro = new Product('',$name,'','','','','');
 $proarr = $pro->getProductByName($conn,$name);
 if($proarr == Null){
   ?>

@@ -23,14 +23,18 @@
         <div class="container">
             <div class="row">
               <h3>Add Coupon</h3>
+
               <form enctype="multipart/form-data" action="addCoupon.php" class="checkout" method="post" name="checkout">
               <p id="billing_first_name_field" class="form-row form-row-first validate-required">
                   <label class="" for="billing_first_name">Insert Coupon discount
                   </label>
                   <input type="text" placeholder="%" name="cdis" maxlength="2" size="4">
                   <input type="submit" value="Add" name="proceed" class="checkout-button button alt wc-forward">
+
               </p>
-            </form>
+              </form>
+
+                <h3>Coupon List</h3>
                 <div class="col-md-12">
                     <div class="product-content-right">
                         <div class="woocommerce">
@@ -45,14 +49,12 @@
                                     </thead>
                                     <tbody>
                                         <?php
-
                                         $Coup = new Coupon('','','');
                                         $coparr = $Coup->getListCoup($conn);
 
 
-
                                         foreach ($coparr as $cop){?>
-                                        <form action="updatePromotion.php" method="post">
+                                        <form action="couponDelete.php" method="post">
                                         <tr class="cart_item">
                                             <td class="coupon-id">
                                                   <input type="hidden" name="cpid" value="<?php echo $cop->getcpid(); ?>">
@@ -71,7 +73,9 @@
                                             </td>
 
                                             <td class="Delete">
-                                                <input type="button" data-value="Place order" value="Delete" id="place_order" name="woocommerce_checkout_place_order" class="btn btn-danger">
+                                              <form>
+                                                <input type="button" value="Delete" class="btn btn-danger" onclick="window.location.href='couponDelete.php?cpid=<?=$cop->getcpid()?>'" />
+                                              </form>
                                             </td>
 
                                         </tr>

@@ -1,6 +1,6 @@
 <?php
 
-    $path = "cart-page.php";
+    $path = "cart-page_CouponApplied.php";
 
     include "class/Conn.php";
     include "class/Product.php";
@@ -204,9 +204,33 @@
                                             <div class="coupon">
 
                                                 <form action="cart-page_CouponApplied.php" method="post">
-                                                  <input type="text" placeholder="Coupon code" value="" id="coupon_code" class="input-text" name="code">
+                                                  <input type="text" placeholder="Coupon code" value="" id="coupon_code" class="input-text" name="code"disabled>
                                                   <input type="submit" value="Apply Coupon">
                                                 </form>
+
+                                                <?php
+                                                $code = $_REQUEST['code'];
+                                                if($code == ''){
+                                                    echo "<script>alert('Please insert Coupon.');window.location='cart-page.php';</script>";
+                                                }else{
+
+                                                    $cou = new Coupon('',$code,'');
+                                                    $couarr = $cou->getCouponBycode($conn,$code);
+
+
+                                                    if(count($couarr) == 0){
+                                                      echo "<script>alert('Coupon not found.');window.location='cart-page.php';</script>";
+
+                                                    }else{
+                                                          $couDis = $couarr[0]->getcdis();
+                                                          echo 'Coupon Applied ' . $couarr[0]->getcdis() . '% discount!';
+
+
+                                                    }
+
+
+                                                }
+                                                 ?>
 
                                             </div>
 
@@ -219,7 +243,7 @@
                                              }else{
                                             ?>
                                             <input type="hidden" name="ftprice" value="<?php echo "Total Price: ".number_format((float)$finalTotalPrice, 2, '.', ''); ?>">
-                                             <?php echo "Total Price: " . number_format((float)$finalTotalPrice, 2, '.', '') ?>
+                                             <?php echo "Total Price: " . number_format((float)$finalTotalPrice-($finalTotalPrice*($couDis/100)), 2, '.', '') ?>
                                             <?php
                                              }
                                              ?>

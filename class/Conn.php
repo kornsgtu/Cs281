@@ -7,4 +7,6 @@
   $password = '12345678';
   $dbname = 'jet40';
 
+  /*$conn = mysqli_connect("localhost", "", "", "test");*/
+
 ?>

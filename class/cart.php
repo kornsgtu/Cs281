@@ -8,7 +8,6 @@
     private $_memId;
     private $_date;
 
-
     public function setCartID($id)
     {
       $this->_cartId = $id;
@@ -174,6 +173,7 @@
 
         return $reArr;
     }
+
 
   }
 ?>
