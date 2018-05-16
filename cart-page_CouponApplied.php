@@ -243,10 +243,15 @@
                                              }else{
                                             ?>
                                             <input type="hidden" name="ftprice" value="<?php echo "Total Price: ".number_format((float)$finalTotalPrice, 2, '.', ''); ?>">
-                                             <?php echo "Total Price: " . number_format((float)$finalTotalPrice-($finalTotalPrice*($couDis/100)), 2, '.', '') ?>
+
+                                             <?php echo "Total Price: ";?>
+                                             <strike><?php echo number_format((float)$finalTotalPrice, 2, '.', ''); ?></strike>
                                             <?php
+                                              echo number_format((float)$finalTotalPrice-($finalTotalPrice*($couDis/100)), 2, '.', '');
+                                              $finalTotalPriceCoupon = $finalTotalPrice-($finalTotalPrice*($couDis/100));
                                              }
                                              ?>
+
 
                                           <input type="button" value="Comfirm" id="btnSave" name="confirm" class="btn btn-success">
                                         </td>
@@ -271,7 +276,7 @@
 <script>
 
   $('#btnSave').click(function() {
-      window.location='cart-confirm.php';
+      window.location='cart-confirm.php?total=<?=$finalTotalPriceCoupon?>';
   });
 
 </script>

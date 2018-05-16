@@ -36,6 +36,7 @@ class Product{
   {
     $this->_discount = $discount;
   }
+
   public function getid()
   {
     return $this->_pid;

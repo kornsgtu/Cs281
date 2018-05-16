@@ -39,15 +39,32 @@ $mem->getMemById($conn);
                                 <div class="col-12">
                                     <div class="woocommerce-billing-fields">
                                         <h3>Address to Transpot</h3>
+                                        <p id="billing_company_field" class="form-row form-row-wide">
+                                            <label class="" for="billing_company">First name</label>
+                                            <br><?=$mem->getname()?></br>
+                                        </p>
+
                                         <p id="billing_first_name_field" class="form-row form-row-first validate-required">
-                                            <label class="" for="billing_first_name">old address
+                                            <label class="" for="billing_first_name">Last name
                                             </label>
-                                            <textarea name="caddress" rows="4" cols="50" readonly><?=$mem->getaddress()?></textarea>
+                                            <br><?=$mem->getlname()?></br>
+                                        </p>
+
+                                        <p id="billing_first_name_field" class="form-row form-row-first validate-required">
+                                            <label class="" for="billing_first_name">E-mail
+                                            </label>
+                                            <br><?=$mem->getemail()?></br>
                                         </p>
                                         <p id="billing_first_name_field" class="form-row form-row-first validate-required">
                                             <label class="" for="billing_first_name">address
                                             </label>
+                                            <br><?=$mem->getaddress()?></br>
+                                        </p>
+                                        <p id="billing_first_name_field" class="form-row form-row-first validate-required">
+                                            <label class="" for="billing_first_name">shipping address
+                                            </label>
                                             <textarea name="caddress" rows="4" cols="50"></textarea>
+                                            <label class="" for="billing_first_name">*Free delivery charge*</label>
                                         </p>
                                         <div class="clear"></div>
                                         <div class="clear"></div>
@@ -77,7 +94,7 @@ $mem->getMemById($conn);
     <script>
 
       $('#btnPayment').click(function() {
-          window.location='epayment.php';
+          window.location='epayment.php?pay_id=<?=$_REQUEST['pay_id']?>pay_total=<?=$_REQUEST['pay_total']?>';
       });
 
     </script>

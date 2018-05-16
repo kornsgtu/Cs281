@@ -16,4 +16,9 @@ if($address!=""){
 
 }
 
+
 ?>
+<script>
+  alert("update success !!!");
+  window.location='delivery-page.php';
+</script>

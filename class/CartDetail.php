@@ -9,7 +9,6 @@
     private $_amount;
     private $_vat ;
     private $_final;
-    private $_total;
 
     public function setDetailId($id)
     {
@@ -37,10 +36,6 @@
     public function setFinal()
     {
       $this->_final  = ($this->_prod->getprice()*$this->_amount) + $this->_vat;
-    }
-    public function setTotal()
-    {
-      $this->_total  = $final;
     }
 
     public function getDetailId($id)
@@ -94,6 +89,7 @@
           $detail->setVat();
           $detail->setFinal();
 
+          
           array_push($reVal, $detail);
 
         }

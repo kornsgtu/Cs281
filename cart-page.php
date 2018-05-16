@@ -147,7 +147,7 @@
 
                                         <td class="product-quantity">
                                             <div class="quantity buttons_added">
-                                              <input type="number" value="<?=$_SESSION['cartItem'][$i]->getAmount()?>" placeholder="" name="camount[]" class="input-text " min="0">
+                                              <input type="number" value="<?=$_SESSION['cartItem'][$i]->getAmount()?>" placeholder="" name="camount[]" class="input-text " min="1" max=<?= $prod->getstock()?>>
                                               <input type="hidden" value="<?=$prod->getid()?>" name="pid[]">
                                             </div>
                                         </td>
@@ -247,7 +247,7 @@
 <script>
 
   $('#btnSave').click(function() {
-      window.location='cart-confirm.php';
+      window.location='cart-confirm.php?total=<?=$finalTotalPrice?>';
   });
 
 </script>

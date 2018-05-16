@@ -43,7 +43,7 @@
     </ul>
   </div>
   <!-- ./Slider -->
-</div> <!-- End slider area --> 
+</div> <!-- End slider area -->
 
       <div class = "type">
         <div class="row">
