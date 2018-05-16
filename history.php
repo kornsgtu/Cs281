@@ -62,7 +62,6 @@
                                         <th>Price</th>
                                         <th>Time</th>
                                         <th>Status</th>
-                                        <th>detail</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -95,9 +94,7 @@
                                         <td>
                                           <span ><?php echo $pay->getstatus()?></span>
                                         </td>
-                                        <td>
-                                          <span ><a href="payment-detail.php?cartId=<?=$pay->getcartId()?>">detail</a></span>
-                                        </td>
+
                                     </tr>
 <?php
                           }  // for($i=0;$i< count($arraysongaun);$i++) {
