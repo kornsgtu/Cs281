@@ -19,7 +19,7 @@
   $pay->setcartId($cart->getCartID());
   $pay->setstatus('.wait.');
   $total = $_REQUEST['total'];
-  $pay->setpaymentId($_SESSION["payment_id"]);
+  //$pay->setpaymentId($_SESSION["payment_id"]);
   $pay->setcartList($_SESSION['cartItem']);
   $pay->settotalPrice($total);
   $pay->paymentConfirm($conn);
@@ -27,6 +27,6 @@
 ?>
 <script>
 
-      window.location='delivery-page.php';
+      window.location='delivery-page.php?pay_id=<?=$pay->getpaymentId()?>pay_total=<?=$pay->gettotalPrice()?>';
 
 </script>

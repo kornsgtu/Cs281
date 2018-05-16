@@ -10,8 +10,9 @@
 
     include "inc/header.php";
     $arraysongaun = array();
+    $cartArr = array();
 
-    $sql = "SELECT * FROM cart inner Join payment WHERE payment.cart_id = cart.cart_id";
+    $sql = "SELECT * FROM cart inner Join payment WHERE payment.cart_id = cart.cart_id AND mem_id = '".$_SESSION['mem_id']."'";
     $rs = $conn->query($sql) or die($sql."<br>".$conn->error);
     while($data=$rs->fetch_object()) {
       $payment = new Payment();
@@ -24,8 +25,9 @@
       $cart->setMemID($data->mem_id);
 
       array_push($arraysongaun,$payment);
-      array_push($arraysongaun,$cart);
+      array_push($cartArr,$cart);
     }
+
 
 ?>
 
@@ -48,49 +50,58 @@
         <div class="row">
             <div class="col-md-4">
 
-
-
-
-
             <div class="col-md-8">
                 <div class="product-content-right">
                     <div class="woocommerce">
                         <form method="post" action="history-update.php">
-                            <table cellspacing="0" class="shop_table cart">
+                            <table cellspacing="0" width="800" align="center">
                                 <thead>
                                     <tr>
-                                        <th class="product-order">Order No.</th>
-                                        <th class="product-name">Member</th>
-                                        <th class="product-price">Price</th>
-                                        <th class="product-date">Time</th>
-                                        <th class="product-status">Status</th>
+                                        <th>Order No.</th>
+                                        <th>Member</th>
+                                        <th>Price</th>
+                                        <th>Time</th>
+                                        <th>Status</th>
+                                        <th>detail</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="Payment">
-                                        <td class="product-order">
-                                          <span><? echo $arraysongaun->getpaymentId()?></span>
+<?php
+
+                    for($i=0;$i< count($arraysongaun);$i++) {
+
+                        //$detailList = $cartArr[$i]->getCartListByMember($conn,$cartArr[$i]->getMemID());
+                        $pay = $arraysongaun[$i];
+                        $cart = $cartArr[$i];
+
+?>
+                                    <tr>
+                                        <td>
+                                          <span><?php echo $pay->getpaymentId()?></span>
                                         </td>
 
-                                        <td class="product-name">
-                                            <span ><?echo $arraysongaun->getMemID()?>"></span>
+                                        <td>
+                                            <span ><?php echo $cart->getMemID()?></span>
                                         </td>
 
-                                        <td class="product-price">
-                                            <span ><?echo $arraysongaun->gettotalPrice()?></span>
+                                        <td>
+                                            <span ><?php echo $pay->gettotalPrice()?></span>
                                         </td>
 
-                                        <td class="product-date">
-                                          <span ><?echo $arraysongaun->getDate()?></span>
+                                        <td>
+                                          <span ><?php echo $cart->getDate()?></span>
                                         </td>
 
-                                        <td class="product-status">
-                                          <span ><?echo $arraysongaun->getstatus()?></span>
+                                        <td>
+                                          <span ><?php echo $pay->getstatus()?></span>
                                         </td>
-
-                                        <tr>
-
+                                        <td>
+                                          <span ><a href="payment-detail.php?cartId=<?=$pay->getcartId()?>">detail</a></span>
+                                        </td>
                                     </tr>
+<?php
+                          }  // for($i=0;$i< count($arraysongaun);$i++) {
+?>
                                 </tbody>
                             </table>
                         </form>

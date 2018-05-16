@@ -38,7 +38,7 @@
       $this->_final  = ($this->_prod->getprice()*$this->_amount) + $this->_vat;
     }
 
-    public function getDetailId($id)
+    public function getDetailId()
     {
         return $this->_detailId;
     }
@@ -75,7 +75,7 @@
 
         $reVal = array();
         $sql = "SELECT * FROM cart_detail WHERE cart_id = '".$cartID."'";
-        $rs = $conn->query() or die();
+        $rs = $conn->query($sql) or die();
         while($data = $rs->fetch_object()) {
 
           $prod = new Product("","","","","","","");
