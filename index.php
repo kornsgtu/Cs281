@@ -13,7 +13,7 @@
         <img src="img/promotion1.png" alt="Slide">
         <div class="caption-group">
           <h2 class="caption title">
-          &nbsp; uecmvbiu <span class=""> <strong></strong></span>
+          uecmvbiu<span class=""> <strong></strong></span>
           </h2>
           <a class="caption button-radius" href="shop.php"><span class="icon"></span>&nbsp;Shop now</a>
         </div>
