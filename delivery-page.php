@@ -94,7 +94,7 @@ $mem->getMemById($conn);
     <script>
 
       $('#btnPayment').click(function() {
-          window.location='epayment.php?pay_id=<?=$_REQUEST['pay_id']?>pay_total=<?=$_REQUEST['pay_total']?>';
+          window.location='epayment.php?pay_id=<?=$_REQUEST['pay_id']?>';
       });
 
     </script>
