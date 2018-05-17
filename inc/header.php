@@ -162,6 +162,7 @@
                         <?php }?>
                         <li <?=($file == "cart")? " class=\"active\"" : "" ; ?>><a href="cart-page.php">Cart</a></li>
                         <li <?=($file == "Notification")? " class=\"active\"" : "" ; ?>><a href="Notification.php">Notification</a></li>
+                        <li <?=($file == "History")? " class=\"active\"" : "" ; ?>><a href="history.php">history</a></li>
                     </ul>
                     <p></p>
                     <form action="search_product.php" method="post">
